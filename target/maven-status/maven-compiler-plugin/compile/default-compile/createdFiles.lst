@@ -1,1 +1,4 @@
+com\tsaki\marketplace\dao\CategoryDAO.class
+com\tsaki\marketplace\daoimpl\CategoryDAOImpl.class
 com\tsaki\marketplace\controller\PageController.class
+com\tsaki\marketplace\dto\Category.class
