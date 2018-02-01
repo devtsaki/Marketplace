@@ -28,6 +28,30 @@ public class CategoryTestCase {
 	}
 	
 //	@Test
+//	public void testCRUDCategory() {
+//		category = new Category();
+//		category.setName("Laptop");
+//		category.setDescription("This is a laptop description");
+//		category.setImageURL("CAT_1.png");
+//		assertEquals("Succesfully added a category inside table", true, categoryDAO.add(category));
+//		
+//		category = new Category();
+//		category.setName("Television");
+//		category.setDescription("This is a TV description");
+//		category.setImageURL("CAT_2.png");
+//		assertEquals("Something went wrong while adding a category inside table", true, categoryDAO.add(category));
+//		
+//		category = categoryDAO.get(2);
+//		category.setName("TV");
+//		assertEquals("Something went wrong while updated a single category in table!", true, categoryDAO.update(category));
+//		
+//		assertEquals("Something went wrong while deleting a single category in table!", true, categoryDAO.delete(category));
+//		
+//		assertEquals("Something went wrong while getting list of categories from table!", 4, categoryDAO.list().size());
+//		
+//	}
+	
+//	@Test
 //	public void testAddCategory() {
 //		category = new Category();
 //		category.setName("Laptop");
@@ -63,28 +87,4 @@ public class CategoryTestCase {
 //		assertEquals("Succesfully got list of categories from table!", 2, categoryDAO.list().size());
 //	}
 	
-	
-	@Test
-	public void testCRUDCategory() {
-		category = new Category();
-		category.setName("Laptop");
-		category.setDescription("This is a laptop description");
-		category.setImageURL("CAT_1.png");
-		assertEquals("Succesfully added a category inside table", true, categoryDAO.add(category));
-		
-		category = new Category();
-		category.setName("Television");
-		category.setDescription("This is a TV description");
-		category.setImageURL("CAT_2.png");
-		assertEquals("Succesfully added a category inside table", true, categoryDAO.add(category));
-		
-		category = categoryDAO.get(2);
-		category.setName("TV");
-		assertEquals("Succesfully updated a single category in table!", true, categoryDAO.update(category));
-		
-		assertEquals("Succesfully deleted a single category in table!", true, categoryDAO.delete(category));
-		
-		assertEquals("Succesfully got list of categories from table!", 1, categoryDAO.list().size());
-		
-	}
 }
