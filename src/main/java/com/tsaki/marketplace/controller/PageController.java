@@ -12,6 +12,7 @@ import com.tsaki.marketplace.dao.CategoryDAO;
 import com.tsaki.marketplace.dao.ProductDAO;
 import com.tsaki.marketplace.dto.Category;
 import com.tsaki.marketplace.dto.Product;
+import com.tsaki.marketplace.exception.ProductNotFoundException;
 
 @Controller
 public class PageController {
@@ -81,9 +82,13 @@ public class PageController {
 	}
 	
 	@RequestMapping("/show/{id}/product")
-	public ModelAndView showSingleProduct(@PathVariable("id") int id) {
+	public ModelAndView showSingleProduct(@PathVariable("id") int id) throws ProductNotFoundException {
 		ModelAndView mv = new ModelAndView("page");
 		Product product = productDAO.get(id);
+		if (product == null) {
+			throw new ProductNotFoundException();
+		}
+		
 		product.setViews(product.getViews() + 1);
 		productDAO.update(product);
 		
