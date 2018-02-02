@@ -2,15 +2,15 @@
 <configuration>
 	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<Pattern>%5-level %msg %d{HH:mm:ss.SSS} logger{36} %n</Pattern>
+			<Pattern>%-5level %msg %d{HH:mm:ss.SSS} %logger{36} %n</Pattern>
 		</encoder>
 	</appender>
 	
-	<logger name="com.tsaki" level="INFO">
+	<logger name="com.tsaki" level="DEBUG" additivity="false">
 		<appender-ref ref="consoleAppender"/>
 	</logger>
 	
-	<root>
+	<root level="INFO">
 		<appender-ref ref="consoleAppender"/>
 	</root>
 </configuration>
