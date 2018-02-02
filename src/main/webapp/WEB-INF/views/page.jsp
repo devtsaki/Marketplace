@@ -19,11 +19,15 @@
 <title>Marketplace - ${title}</title>
 <script>
 	window.menu = "${title}";
+	window.contextRoot = '${contextRoot}';
 </script>
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
 <!-- Bootstrap Theme CSS -->
 <link href="<c:url value="/resources/css/bootstrap-readable-theme.css"/> " rel="stylesheet">
+
+<!-- DataTables Bootstrap CSS -->
+<link href="<c:url value="/resources/css/dataTables.bootstrap.css"/>" rel="stylesheet">
 
 
 <!-- Custom CSS -->
@@ -59,6 +63,11 @@
 			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
 				<%@include file="listProducts.jsp"%>
 			</c:if>
+			
+			<!-- Single Product Content -->
+			<c:if test="${userClickShowProduct== true}">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
 
 		</div>
 
@@ -70,6 +79,10 @@
 
 		<!-- Bootstrap Core JavaScript -->
 		<script src="<c:url value="/resources/js/bootstrap.min.js"/>" ></script>
+		
+		<!-- DataTbles -->
+		<script src="<c:url value="/resources/js/jquery.dataTables.js"/>"></script>
+		<script src="<c:url value="/resources/js/dataTables.bootstrap.js"/>"></script>
 
 		<!-- My custom script -->
 		<script src="<c:url value="/resources/js/myapp.js"/>" ></script>
