@@ -112,59 +112,20 @@
 							<th>Id</th>
 							<th>&#160;</th>
 							<th>Name</th>
+							<th>Brand</th>
 							<th>Quantity</th>
 							<th>Unit Price</th>
 							<th>Active</th>
 							<th>Edit</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>4</td>
-							<td>
-								<img class="adminDataTableImg" src="<c:url value="/resources/images/OEYT3694VPQ.jpg"/>" alt="Macbook Pro" />
-							</td>
-							<td>Macbook Pro</td>
-							<td>5</td>
-							<td>1650 &#8364</td>
-							<td>
-								<label class="switch">
-									<input type="checkbox" checked="checked" value="4" />
-									<span class="slider round"></span>
-								</label>
-							</td>
-							<td>
-								<a href="${contextRoot}/admin/4/product" class="btn btn-warning">
-									<span class="glyphicon glyphicon-pencil"></span>
-								</a>
-							</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>
-								<img class="adminDataTableImg" src="<c:url value="/resources/images/OEYT3694VPQ.jpg"/>" alt="Macbook Pro" />
-							</td>
-							<td>Macbook Pro</td>
-							<td>5</td>
-							<td>1650 &#8364</td>
-							<td>
-								<label class="switch">
-									<input type="checkbox" value="4" />
-									<span class="slider round"></span>
-								</label>
-							</td>
-							<td>
-								<a href="${contextRoot}/admin/4/product" class="btn btn-warning">
-									<span class="glyphicon glyphicon-pencil"></span>
-								</a>
-							</td>
-						</tr>
-					</tbody>
+					
 					<tfoot>
 						<tr>
 							<th>Id</th>
 							<th>&#160;</th>
 							<th>Name</th>
+							<th>Brand</th>
 							<th>Quantity</th>
 							<th>Unit Price</th>
 							<th>Active</th>
