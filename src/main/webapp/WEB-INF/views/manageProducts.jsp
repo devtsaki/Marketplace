@@ -155,7 +155,7 @@
 					<h4 class="modal-title">Add New Category</h4>
 				</div>
 				<div class="modal-body">
-					<form:form modelAttribute="category" action="${ContextRoot}/admin/category" 
+					<form:form id="categoryForm" modelAttribute="category" action="${contextRoot}/admin/category" 
 					method="POST" class="form-horizontal">
 						<div class="form-group">
 							<label for="category_name" class="control-label col-md-4">Category Name</label>

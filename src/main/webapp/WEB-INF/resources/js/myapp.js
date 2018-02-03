@@ -213,4 +213,38 @@ $(function() {
 		});
 	}
 	
+	//category validation
+	
+	var $categoryForm = $("#categoryForm");
+	
+	if ($categoryForm.length) {
+		$categoryForm.validate({
+			rules : {
+				name : {
+					required: true,
+					minlength: 2
+				},
+				description : {
+					required: true
+				} 
+			},
+			messages : {
+				name : {
+					required: "Please enter category name!",
+					minlength: "You should try more! Two letters is the minimum!"
+				},
+				description : {
+					required: "Come on now! Enter a description!"
+				}
+			},
+			errorElement : "em",
+			errorPlacement: function(error, element) {
+				error.addClass("help-block");
+				error.insertAfter(element);
+			}
+		});
+	}
+	
+	
+	
 });
