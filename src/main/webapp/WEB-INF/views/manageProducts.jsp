@@ -16,14 +16,15 @@
 				</div>
 				<div class="panel-body">
 					<form:form class="form-horizontal" modelAttribute="product"
-						action="${contextRoot}/admin/products" method="POST">
+						action="${contextRoot}/admin/products" method="POST"
+						enctype="multipart/form-data">
 						<div class="form-group">
 							<label class="control-label col-md-4" for="name">Enter
 								Product Name</label>
 							<div class="col-md-8">
 								<form:input type="text" path="name" id="name"
 									placeholder="Product Name" class="form-control" />
-								<form:errors path="name" cssClass="help-block" element="em"/>
+								<form:errors path="name" cssClass="help-block" element="em" />
 							</div>
 						</div>
 						<div class="form-group">
@@ -32,7 +33,7 @@
 							<div class="col-md-8">
 								<form:input type="text" path="brand" id="brand"
 									placeholder="Brand Name" class="form-control" />
-								<form:errors path="brand" cssClass="help-block" element="em"/>
+								<form:errors path="brand" cssClass="help-block" element="em" />
 							</div>
 						</div>
 						<div class="form-group">
@@ -41,7 +42,8 @@
 							<div class="col-md-8">
 								<form:textarea path="description" id="description"
 									class="form-control"></form:textarea>
-								<form:errors path="description" cssClass="help-block" element="em"/>
+								<form:errors path="description" cssClass="help-block"
+									element="em" />
 							</div>
 						</div>
 						<div class="form-group">
@@ -50,7 +52,7 @@
 							<div class="col-md-8">
 								<form:input type="text" path="unitPrice" id="unitPrice"
 									placeholder="Unit Price" class="form-control" />
-								<form:errors path="unitPrice" cssClass="help-block" element="em"/>
+								<form:errors path="unitPrice" cssClass="help-block" element="em" />
 							</div>
 						</div>
 						<div class="form-group">
@@ -59,7 +61,16 @@
 							<div class="col-md-8">
 								<form:input type="number" path="quantity" id="quantity"
 									placeholder="Quantity Available" class="form-control" />
-								<form:errors path="quantity" cssClass="help-block" element="em"/>
+								<form:errors path="quantity" cssClass="help-block" element="em" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4" for="file">Select
+								an Image</label>
+							<div class="col-md-8">
+								<form:input type="file" path="file" id="file"
+									class="form-control" />
+								<form:errors path="file" cssClass="help-block" element="em" />
 							</div>
 						</div>
 						<div class="form-group">
@@ -87,4 +98,82 @@
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>Available Products</h3>
+			<hr />
+		</div>
+		<div class="col-xs-12">
+			<div style="overflow: auto">
+				<table id="adminProductsTable"
+					class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>&#160;</th>
+							<th>Name</th>
+							<th>Quantity</th>
+							<th>Unit Price</th>
+							<th>Active</th>
+							<th>Edit</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>4</td>
+							<td>
+								<img class="adminDataTableImg" src="<c:url value="/resources/images/OEYT3694VPQ.jpg"/>" alt="Macbook Pro" />
+							</td>
+							<td>Macbook Pro</td>
+							<td>5</td>
+							<td>1650 &#8364</td>
+							<td>
+								<label class="switch">
+									<input type="checkbox" checked="checked" value="4" />
+									<span class="slider round"></span>
+								</label>
+							</td>
+							<td>
+								<a href="${contextRoot}/admin/4/product" class="btn btn-warning">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>
+								<img class="adminDataTableImg" src="<c:url value="/resources/images/OEYT3694VPQ.jpg"/>" alt="Macbook Pro" />
+							</td>
+							<td>Macbook Pro</td>
+							<td>5</td>
+							<td>1650 &#8364</td>
+							<td>
+								<label class="switch">
+									<input type="checkbox" value="4" />
+									<span class="slider round"></span>
+								</label>
+							</td>
+							<td>
+								<a href="${contextRoot}/admin/4/product" class="btn btn-warning">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Id</th>
+							<th>&#160;</th>
+							<th>Name</th>
+							<th>Quantity</th>
+							<th>Unit Price</th>
+							<th>Active</th>
+							<th>Edit</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+
 </div>

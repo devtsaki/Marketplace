@@ -2,6 +2,7 @@ package com.tsaki.marketplace.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -20,6 +21,8 @@ import com.tsaki.marketplace.dao.CategoryDAO;
 import com.tsaki.marketplace.dao.ProductDAO;
 import com.tsaki.marketplace.dto.Category;
 import com.tsaki.marketplace.dto.Product;
+import com.tsaki.marketplace.util.FileUploadUtility;
+import com.tsaki.marketplace.validator.ProductValidator;
 
 @Controller
 @RequestMapping("/admin")
@@ -40,7 +43,7 @@ public class AdminController {
 		mv.addObject("title" , "Manage Products");
 		Product newProduct = new Product();
 		newProduct.setSupplierId(1);
-		newProduct.setActive(true);
+		
 		mv.addObject("product", newProduct);
 		if (operation != null) {
 			if (operation.equals("product")) {
@@ -52,16 +55,21 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/products", method = RequestMethod.POST)
-	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult results, Model model) {
+	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult results, Model model, HttpServletRequest request) {
+		new ProductValidator().validate(mProduct, results);
 		if (results.hasErrors()) {
 			model.addAttribute("userClickManageProducts", true);
 			model.addAttribute("title" , "Manage Products");
 			model.addAttribute("message", "Validation failed for Product Submission!");
 			return "page";
 		}
-		
+		mProduct.setActive(true);
 		logger.info(mProduct.toString());
 		productDAO.add(mProduct);
+		if(!mProduct.getFile().getOriginalFilename().equals("")) {
+			FileUploadUtility.uploadFile(request, mProduct.getFile(), mProduct.getCode());
+		}
+		
 		return "redirect:/admin/products?operation=product";
 	}
 	

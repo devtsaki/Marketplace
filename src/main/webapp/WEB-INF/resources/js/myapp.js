@@ -99,4 +99,30 @@ $(function() {
 		} , 3000)
 	}
 	
+	$(".switch input[type='checkbox']").on("change", function() {
+		var checkbox = $(this);
+		var checked = checkbox.prop("checked");
+		var dMsg = (checked) ? "Are you sure you want to activate the product?" : "Are you sure you want to deactivate the product?";
+		var value = checkbox.prop("value");
+		
+		bootbox.confirm({
+			size: "medium",
+			title: "Product Activation/Deactivation",
+			message: dMsg,
+			callback: function(confirmed) {
+				if (confirmed) {
+					bootbox.alert({
+						size: "medium",
+						title: "Information",
+						message: "You are going to change the status of product " + value
+					});
+				}
+				else {
+					checkbox.prop("checked", !checked);
+				}
+			}
+			
+		});	
+	});
+	
 });

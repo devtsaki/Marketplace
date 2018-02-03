@@ -85,6 +85,9 @@
 		<script src="<c:url value="/resources/js/jquery.dataTables.js"/>"></script>
 		<script src="<c:url value="/resources/js/dataTables.bootstrap.js"/>"></script>
 
+		<!-- BootBox -->
+		<script src="<c:url value="/resources/js/bootbox.min.js"/>"></script>
+		
 		<!-- My custom script -->
 		<script src="<c:url value="/resources/js/myapp.js"/>" ></script>
 	</div>
