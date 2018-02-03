@@ -171,7 +171,7 @@ $(function() {
 					bSortable: false,
 					mRender: function (data, type, row) {
 						var str = "";
-						str += '<a href="${contextRoot}/admin/' + data + '/product" class="btn btn-warning">';
+						str += '<a href="' + window.contextRoot + '/admin/' + data + '/product" class="btn btn-warning">';
 						str += '<span class="glyphicon glyphicon-pencil"></span></a>';
 						return str;
 					}
@@ -191,11 +191,16 @@ $(function() {
 						message: dMsg,
 						callback: function(confirmed) {
 							if (confirmed) {
-								bootbox.alert({
-									size: "medium",
-									title: "Information",
-									message: "You changed the status of product " + value
+								var activationUrl = window.contextRoot + "/admin/product/" + value + "/activation";
+								
+								$.post(activationUrl, function(data) {
+									bootbox.alert({
+										size: "medium",
+										title: "Information",
+										message: data
+									});
 								});
+								
 							}
 							else {
 								checkbox.prop("checked", !checked);
