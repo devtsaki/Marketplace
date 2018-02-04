@@ -18,9 +18,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class HibernateConfig {
 
-	private static final String DB_URL = "jdbc:mysql://localhost:3306/marketplace";
-	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_DIALECT = "org.hibernate.dialect.MySQLDialect";
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/marketplace?autoReconnect=true&useSSL=false";
+	private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
+	private static final String DB_DIALECT = "org.hibernate.dialect.MySQL5InnoDBDialect";
 	private static final String DB_USERNAME = "root";
 	private static final String DB_PASSWORD = "root";
 	
@@ -50,6 +50,7 @@ public class HibernateConfig {
 		properties.put("hibernate.dialect", DB_DIALECT);
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
+		properties.put("hibernate.hbm2ddl.auto", "update");
 		
 		return properties;
 	}
