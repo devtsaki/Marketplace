@@ -1,5 +1,7 @@
 package com.tsaki.marketplace.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Address {
+public class Address implements Serializable {
 	
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -19,9 +24,6 @@ public class Address {
 	
 	@Column(name = "address_line_one")
 	private String addressLineOne;
-	
-	@Column(name = "address_line_two")
-	private String addressLineTwo;
 	
 	private String city;
 	private String country;
@@ -54,14 +56,6 @@ public class Address {
 	
 	public void setAddressLineOne(String addressLineOne) {
 		this.addressLineOne = addressLineOne;
-	}
-	
-	public String getAddressLineTwo() {
-		return addressLineTwo;
-	}
-	
-	public void setAddressLineTwo(String addressLineTwo) {
-		this.addressLineTwo = addressLineTwo;
 	}
 	
 	public String getCity() {

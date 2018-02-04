@@ -1,5 +1,6 @@
 package com.tsaki.marketplace.dto;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -18,8 +19,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-public class Product {
+public class Product implements Serializable {
 	
+
+	private static final long serialVersionUID = 1L;
+
 	public Product() {
 		this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
 	};

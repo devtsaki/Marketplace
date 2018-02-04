@@ -58,7 +58,6 @@ public class UserTestCase {
 //			
 //			address = new Address();
 //			address.setAddressLineOne("Bari 61, Test124");
-//			address.setAddressLineTwo("Dipla 12, Test125");
 //			address.setCity("Patra");
 //			address.setCountry("Greece");
 //			address.setPostalCode("33212");
@@ -113,7 +112,6 @@ public class UserTestCase {
 //		
 //		address = new Address();
 //		address.setAddressLineOne("Amalias 60, Test123");
-//		address.setAddressLineTwo("Over Oven");
 //		address.setCity("Athens");
 //		address.setCountry("Greece");
 //		address.setPostalCode("11212");
@@ -125,7 +123,6 @@ public class UserTestCase {
 //		
 //		address = new Address();
 //		address.setAddressLineOne("Bari 61, Test124");
-//		address.setAddressLineTwo("Dipla 12, Test125");
 //		address.setCity("Patra");
 //		address.setCountry("Greece");
 //		address.setPostalCode("33212");
@@ -140,7 +137,6 @@ public class UserTestCase {
 //		user = userDAO.getByEmail("test@test.com");
 //		address = new Address();
 //		address.setAddressLineOne("Koropi 161, Test1234");
-//		address.setAddressLineTwo("Dipla Airport Test125");
 //		address.setCity("Athens");
 //		address.setCountry("Greece");
 //		address.setPostalCode("178212");
@@ -150,11 +146,11 @@ public class UserTestCase {
 //		assertEquals("Failed to add shipping address!", true, userDAO.addAddress(address));
 //	}
 
-	@Test
-	public void testGetAddresses() {
-		user = userDAO.getByEmail("test@test.com");
-		assertEquals("Failed to get list of addresses or size doesn't match", 2, userDAO.listShippingAddresses(user).size());
-		assertEquals("Failed to get list of billing address", "Athens" , userDAO.getBillingAddress(user).getCity());
-	}
+//	@Test
+//	public void testGetAddresses() {
+//		user = userDAO.getByEmail("test@test.com");
+//		assertEquals("Failed to get list of addresses or size doesn't match", 2, userDAO.listShippingAddresses(user).size());
+//		assertEquals("Failed to get list of billing address", "Athens" , userDAO.getBillingAddress(user).getCity());
+//	}
 
 }
