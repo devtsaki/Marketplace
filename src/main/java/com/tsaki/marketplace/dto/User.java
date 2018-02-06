@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "user_detail")
@@ -26,18 +29,25 @@ public class User implements Serializable {
 	private Cart cart;
 	
 	@Column(name = "first_name")
+	@NotBlank(message = "Please enter first name!")
 	private String firstName;
 	
 	@Column(name = "last_name")
+	@NotBlank(message = "Please enter last name!")
 	private String lastName;
 
-	
+	@NotBlank(message = "Please enter email!")
 	private String email;
 	private String role;
 	private boolean enabled = true;
+	@NotBlank(message = "Please enter password!")
 	private String password;
 	
+	@Transient
+	private String confirmPassword;
+	
 	@Column(name = "contact_number")
+	@NotBlank(message = "Please enter contact number!")
 	private String contactNumber;
 
 	public int getId() {
@@ -102,6 +112,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 	public String getContactNumber() {

@@ -1,6 +1,9 @@
 package com.tsaki.marketplace.handler;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.binding.message.MessageBuilder;
+import org.springframework.binding.message.MessageContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.tsaki.marketplace.dao.UserDAO;
@@ -15,8 +18,26 @@ public class RegisterHandler {
 	@Autowired
 	private UserDAO userDAO; 
 	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	public RegisterModel init() {
 		return new RegisterModel();
+	}
+	
+	public String validateUser(User user, MessageContext error) {
+		String transitionValue = "success";
+		if (!(user.getPassword().equals(user.getConfirmPassword()))) {
+			error.addMessage(new MessageBuilder().error().source("confirmPassword").defaultText("Password doesn't match!").build());
+			transitionValue = "failure";
+		}
+		
+		if (userDAO.getByEmail(user.getEmail()) != null) {
+			error.addMessage(new MessageBuilder().error().source("email").defaultText("Email address is being used!").build());
+			transitionValue = "failure";
+			transitionValue = "failure";
+		}
+		return transitionValue;
 	}
 	
 	public void addUser(RegisterModel registerModel, User user) {
@@ -35,6 +56,7 @@ public class RegisterHandler {
 			cart.setUser(user);
 			user.setCart(cart);
 		}
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userDAO.addUser(user);
 		Address billing = model.getBilling();
 		billing.setUser(user);
@@ -43,5 +65,7 @@ public class RegisterHandler {
 		
 		return transitionValue;
 	}
+	
+	
 	
 }

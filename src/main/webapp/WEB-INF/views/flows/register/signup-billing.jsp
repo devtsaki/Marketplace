@@ -11,11 +11,11 @@
 					<form:form method="POST" class="form-horizontal" id="billingForm"
 						modelAttribute="billing">
 						<div class="form-group">
-							<label class="control-label col-md-4" for="addressLineOne">Address
-								Line One</label>
+							<label class="control-label col-md-4" for="addressLineOne">Address</label>
 							<div class="col-md-8">
 								<form:input type="text" path="addressLineOne"
-									class="form-control" placeholder="Enter Address Line One" />
+									class="form-control" placeholder="Enter Address" />
+									<form:errors path="addressLineOne" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -23,6 +23,7 @@
 							<div class="col-md-8">
 								<form:input type="text" path="city" class="form-control"
 									placeholder="Enter City" />
+									<form:errors path="city" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -31,6 +32,7 @@
 							<div class="col-md-8">
 								<form:input type="text" path="postalCode" class="form-control"
 									placeholder="Enter Postal Code" />
+									<form:errors path="postalCode" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -38,6 +40,7 @@
 							<div class="col-md-8">
 								<form:input type="text" path="country" class="form-control"
 									placeholder="Enter Country" />
+									<form:errors path="country" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						<div class="form-group">

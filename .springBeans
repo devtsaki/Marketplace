@@ -5,10 +5,12 @@
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
-	<enableImports><![CDATA[false]]></enableImports>
+	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
 	</configs>
 	<autoconfigs>
+		<config>src/main/webapp/WEB-INF/spring-security.xml</config>
+		<config>src/main/webapp/WEB-INF/dispatcher-servlet.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

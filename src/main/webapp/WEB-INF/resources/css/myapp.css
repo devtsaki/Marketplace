@@ -1,11 +1,16 @@
 html {
 	height: 100%;
+	font-size: 100%;
 }
 
 body {
 	padding-top: 70px;
-	/* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 	height: 100%;
+	background: #ffffff;
+}
+
+.navbar {
+	background-color: #ffffff;
 }
 
 .slide-image {
@@ -55,6 +60,11 @@ footer {
 /*
 Custom style 
 */
+
+.table-responsive {
+	overflow-x: inherit;
+}
+
 .wrapper {
 	min-height: 100%;
 	position: relative;

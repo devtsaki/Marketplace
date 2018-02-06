@@ -14,7 +14,7 @@ CREATE TABLE user_detail (
 	last_name VARCHAR(45),
 	role VARCHAR(45),
 	enabled BOOLEAN,
-	password VARCHAR(45),
+	password VARCHAR(60),
 	email VARCHAR(45),
 	contact_number VARCHAR(15),
 	CONSTRAINT pk_user_id PRIMARY KEY (id)
@@ -72,9 +72,9 @@ VALUES ('Laptop', 'This is description for Laptop category!', 'CAT_1.png', true)
 		
 -- adding three users 
 INSERT INTO user_detail (first_name, last_name, role, enabled, password, email, contact_number)
-VALUES  ('George', 'Tsakiris', 'ADMIN', true, 'admin', 'tsaki67@gmail.com', '123456789'),
-		('John', 'Tade', 'SUPPLIER', true, '1234', 'john@gmail.com', '321456789'),
-		('Maria', 'Poula', 'SUPPLIER', true, '1234', 'maria@gmail.com', '777456789');
+VALUES  ('George', 'Tsakiris', 'ADMIN', true, '$04$ohsttJxmcYqOb9TiCOtQK.vtFjprLECgLvC0o5u2Zsy.QhUGIvsKC', 'tsaki67@gmail.com', '123456789'),
+		('John', 'Xristis', 'SUPPLIER', true, '$04$R5xYkSNBRwqLua4Au8A9i.sSHjBVwPyj.vu.Qn2ikgpkIhwO14hf2', 'john@xristis.com', '321456789'),
+		('Maria', 'Supplier', 'SUPPLIER', true, '$04$IkWu7EQxHJ/qro28C0RooeheoP9kYXhati1yUwYyZX0RfifkV12hi', 'maria@supplier.com', '777456789');
 		
 -- adding a supplier correspondece address
 INSERT INTO address( user_id, address_line_one, address_line_two, city, country, postal_code, is_billing, is_shipping) 

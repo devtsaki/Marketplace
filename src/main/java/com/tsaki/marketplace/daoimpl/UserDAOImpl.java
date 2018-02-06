@@ -39,7 +39,6 @@ public class UserDAOImpl implements UserDAO {
 					.setParameter("email", email).getSingleResult();
 		}
 		catch(Exception ex) {
-			ex.printStackTrace();
 			return null;
 		}
 	}

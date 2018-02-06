@@ -22,6 +22,17 @@ $(function() {
 		break;
 	}
 	
+	//CSRF Ajax
+	var token = $("meta[name='_csrf']").attr('content');
+	var header = $("meta[name='_csrf_header']").attr('content');
+	
+	if (token.length > 0 && header.length > 0) {
+		$(document).ajaxSend(function(e, xhr, options) {
+			xhr.setRequestHeader(header, token);
+			
+		});
+	}
+	
 	//jquery dataTable
 	
 	var $table = $("#productListTable");
@@ -78,14 +89,16 @@ $(function() {
 					mRender: function(data, type, row) {
 						var str = "";
 						str += "<a href='"+ window.contextRoot +"/show/"+ data +"/product' class='btn btn-primary'><span class='glyphicon glyphicon-eye-open'></span></a> &#160";
+						if (userRole == "ADMIN") {
+							str += "<a href='"+ window.contextRoot +"/admin/"+ data +"/product' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a>";
+						} else {													
+							if (row.quantity < 1) {
+								str += "<a href='javascript:void(0)' class='btn btn-success disabled'><span class='glyphicon glyphicon-shopping-cart'></span></a>"; 
+							} else {	
+									str += "<a href='"+ window.contextRoot +"/cart/add/"+ data +"/product' class='btn btn-success'><span class='glyphicon glyphicon-shopping-cart'></span></a>";									
+							}
 						
-						if (row.quantity < 1) {
-							str += "<a href='javascript:void(0)' class='btn btn-success disabled'><span class='glyphicon glyphicon-shopping-cart'></span></a>"; 
-						} else {
-							str += "<a href='"+ window.contextRoot +"/cart/add/"+ data +"/product' class='btn btn-success'><span class='glyphicon glyphicon-shopping-cart'></span></a>";
 						}
-						
-						
 						return str;
 					}
 				}
@@ -235,6 +248,41 @@ $(function() {
 				},
 				description : {
 					required: "Come on now! Enter a description!"
+				}
+			},
+			errorElement : "em",
+			errorPlacement: function(error, element) {
+				error.addClass("help-block");
+				error.insertAfter(element);
+			}
+		});
+	}
+	
+	
+	//login validation
+	
+	var $loginForm = $("#loginForm");
+	
+	if ($loginForm.length) {
+		$loginForm.validate({
+			rules : {
+				username : {
+					required: true,
+					email: true
+				},
+				password : {
+					required: true,
+					minlength: 3
+				} 
+			},
+			messages : {
+				username : {
+					required: "Please enter username!",
+					email: "Please enter valid email!"
+				},
+				password : {
+					required: "Dammit! Enter a password!",
+					minlength: "You are very special! Three characters is the minimum!"
 				}
 			},
 			errorElement : "em",

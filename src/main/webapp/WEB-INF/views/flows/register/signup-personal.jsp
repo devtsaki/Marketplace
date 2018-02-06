@@ -14,6 +14,7 @@
 							<div class="col-md-8">
 								<form:input type="text" path="firstName" class="form-control"
 									placeholder="First Name" />
+									<form:errors path="firstName" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -21,6 +22,7 @@
 							<div class="col-md-8">
 								<form:input type="text" path="lastName" class="form-control"
 									placeholder="Last Name" />
+									<form:errors path="lastName" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -28,6 +30,7 @@
 							<div class="col-md-8">
 								<form:input type="text" path="email" class="form-control"
 									placeholder="abc@xyz.com" />
+									<form:errors path="email" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -35,6 +38,7 @@
 							<div class="col-md-8">
 								<form:input type="text" path="contactNumber"
 									class="form-control" placeholder="Phone Number" maxlength="10" />
+									<form:errors path="contactNumber" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -42,6 +46,15 @@
 							<div class="col-md-8">
 								<form:input type="password" path="password" class="form-control"
 									placeholder="Password" />
+									<form:errors path="password" cssClass="help-block" element="em"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-4">Confirm Password</label>
+							<div class="col-md-8">
+								<form:input type="password" path="confirmPassword" class="form-control"
+									placeholder="Confirm Password" />
+									<form:errors path="confirmPassword" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						<div class="form-group">
