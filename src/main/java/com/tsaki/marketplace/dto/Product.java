@@ -60,7 +60,9 @@ public class Product implements Serializable {
 	@JsonIgnore
 	private int supplierId;
 	
+	@Column(columnDefinition = "int default 0")
 	private int purchases;
+	@Column(columnDefinition = "int default 0")
 	private int views;
 	
 	@Transient

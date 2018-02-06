@@ -72,9 +72,9 @@ VALUES ('Laptop', 'This is description for Laptop category!', 'CAT_1.png', true)
 		
 -- adding three users 
 INSERT INTO user_detail (first_name, last_name, role, enabled, password, email, contact_number)
-VALUES  ('George', 'Tsakiris', 'ADMIN', true, '$04$ohsttJxmcYqOb9TiCOtQK.vtFjprLECgLvC0o5u2Zsy.QhUGIvsKC', 'tsaki67@gmail.com', '123456789'),
-		('John', 'Xristis', 'SUPPLIER', true, '$04$R5xYkSNBRwqLua4Au8A9i.sSHjBVwPyj.vu.Qn2ikgpkIhwO14hf2', 'john@xristis.com', '321456789'),
-		('Maria', 'Supplier', 'SUPPLIER', true, '$04$IkWu7EQxHJ/qro28C0RooeheoP9kYXhati1yUwYyZX0RfifkV12hi', 'maria@supplier.com', '777456789');
+VALUES  ('George', 'Tsakiris', 'ADMIN', true, '$2a$10$Zlkl1tyS4rwUVsKBjlyU1edv6gUjyMhBSU2Nsh6QjxFeuIDFl87u2', 'tsaki67@gmail.com', '123456789'),
+		('John', 'Xristis', 'USER', true, '$2a$10$MoYjfhDnR1q5lZjdZTJsZO/LOsPns2i1UXf8VaByLRC7QcbF143.W', 'john@xristis.com', '321456789'),
+		('Maria', 'Supplier', 'SUPPLIER', true, '$2a$10$jWdOjcsMznfhkP52Yjq.uuu8YBmsaTZEjH2vDBlpEFhRIsBuO6b9.', 'maria@supplier.com', '777456789');
 		
 -- adding a supplier correspondece address
 INSERT INTO address( user_id, address_line_one, address_line_two, city, country, postal_code, is_billing, is_shipping) 
