@@ -1,5 +1,5 @@
 $(function() {
-	//actime menu navbar
+	// actime menu navbar
 	switch(menu) {
 		case "About Us":
 			$("#about").addClass("active");
@@ -13,6 +13,9 @@ $(function() {
 		case "Manage Products":
 			$("#manageProducts").addClass("active");
 			break;
+		case "User Cart":
+			$("#userCart").addClass("active");
+			break;
 		default:
 			if (menu == "Home") {
 				break;
@@ -22,7 +25,7 @@ $(function() {
 		break;
 	}
 	
-	//CSRF Ajax
+	// CSRF Ajax
 	var token = $("meta[name='_csrf']").attr('content');
 	var header = $("meta[name='_csrf_header']").attr('content');
 	
@@ -33,7 +36,7 @@ $(function() {
 		});
 	}
 	
-	//jquery dataTable
+	// jquery dataTable
 	
 	var $table = $("#productListTable");
 	if ($table.length) {
@@ -115,8 +118,8 @@ $(function() {
 	
 	
 	
-	//Admin dataTable
-//jquery dataTable
+	// Admin dataTable
+// jquery dataTable
 	
 	var $adminProductsTable = $("#adminProductsTable");
 	if ($adminProductsTable.length) {
@@ -226,7 +229,7 @@ $(function() {
 		});
 	}
 	
-	//category validation
+	// category validation
 	
 	var $categoryForm = $("#categoryForm");
 	
@@ -259,7 +262,7 @@ $(function() {
 	}
 	
 	
-	//login validation
+	// login validation
 	
 	var $loginForm = $("#loginForm");
 	
@@ -293,6 +296,34 @@ $(function() {
 		});
 	}
 	
-	
+	$("button[name='refreshCart']").click(function() {
+		var cartLineId = $(this).attr("value");
+		var countElement = $("count_" + cartLineId);
+		var originalCount = countElement.attr("value");
+		var currentCount = countElement.val();
+		
+		var cartLineId = $(this).attr('value');
+		var countField = $('#count_' + cartLineId);
+		var originalCount = countField.attr('value');
+		// do the checking only the count has changed
+		if(countField.val() !== originalCount) {	
+			// check if the quantity is within the specified range
+			if(countField.val() < 1 || countField.val() > 3) {
+				// set the field back to the original field
+				countField.val(originalCount);
+				bootbox.alert({
+					size: "medium",
+			    	title: "Error",
+			    	message: "Don't be greedy or irrational! One to four products please!"
+				});
+			}
+			else {
+				// use the window.location.href property to send the request to
+				// the server
+				var updateUrl = window.contextRoot + '/cart/' + cartLineId + '/update?count=' + countField.val();
+				window.location.href = updateUrl;
+			}
+		}
+	});
 	
 });

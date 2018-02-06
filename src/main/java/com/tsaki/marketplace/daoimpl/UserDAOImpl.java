@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tsaki.marketplace.dao.UserDAO;
 import com.tsaki.marketplace.dto.Address;
-import com.tsaki.marketplace.dto.Cart;
 import com.tsaki.marketplace.dto.User;
 
 @Repository("userDAO")
@@ -80,18 +79,6 @@ public class UserDAOImpl implements UserDAO {
 		catch(Exception ex) {
 			ex.printStackTrace();
 			return null;
-		}
-	}
-
-	@Override
-	public boolean updateCart(Cart cart) {
-		try {
-			sessionFactory.getCurrentSession().update(cart);
-			return true;
-		}
-		catch(Exception ex) {
-			ex.printStackTrace();
-			return false;
 		}
 	}
 
