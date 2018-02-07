@@ -25,14 +25,7 @@
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css"/>"
 	rel="stylesheet">
-<!-- Bootstrap Theme CSS -->
-<link
-	href="<c:url value="/resources/css/bootstrap-readable-theme.css"/> "
-	rel="stylesheet">
 
-<!-- DataTables Bootstrap CSS -->
-<link href="<c:url value="/resources/css/dataTables.bootstrap.css"/>"
-	rel="stylesheet">
 
 
 <!-- Custom CSS -->

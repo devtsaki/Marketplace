@@ -22,12 +22,13 @@ public class GlobalController {
 	private UserDAO userDAO;
 	
 	private UserModel userModel = null;
+	private User user = null;
 	
 	@ModelAttribute("userModel")
 	public UserModel getUserModel() {
 		if (session.getAttribute("userModel") == null) {
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-			User user = userDAO.getByEmail(authentication.getName());
+			user = userDAO.getByEmail(authentication.getName());
 			if (user != null) {
 				userModel = new UserModel();
 				userModel.setId(user.getId());

@@ -6,7 +6,7 @@
 		</encoder>
 	</appender>
 	
-	<logger name="com.tsaki" level="DEBUG" additivity="false">
+	<logger name="com.tsaki" level="INFO" additivity="false">
 		<appender-ref ref="consoleAppender"/>
 	</logger>
 	
