@@ -3,6 +3,7 @@ package com.tsaki.marketplace.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,7 @@ import com.tsaki.marketplace.dao.CategoryDAO;
 import com.tsaki.marketplace.dao.StockDAO;
 import com.tsaki.marketplace.dto.Category;
 import com.tsaki.marketplace.dto.Stock;
+import com.tsaki.marketplace.model.UserModel;
 
 @Controller
 @RequestMapping("/supplier")
@@ -31,6 +33,9 @@ public class SupplierController {
 	@Autowired
 	private StockDAO stockDAO;
 	
+	@Autowired
+	HttpSession session;
+	
 	
 	private static final Logger logger = LoggerFactory.getLogger(SupplierController.class);
 
@@ -39,9 +44,10 @@ public class SupplierController {
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("userClickStock", true);
 		mv.addObject("title" , "Sell Products");
+		UserModel user = (UserModel) session.getAttribute("userModel");
 		Stock newStock = new Stock();
-		newStock.setUserId(0);
-		
+		newStock.setUserId(user.getId());
+		logger.info(newStock.toString());
 		mv.addObject("stock", newStock);
 		if (operation != null) {
 			if (operation.equals("stock")) {
@@ -53,7 +59,7 @@ public class SupplierController {
 	}
 	
 	@RequestMapping(value = "/stock", method = RequestMethod.POST)
-	public String handleStockSubmission(@ModelAttribute("product") Stock mStock, 
+	public String handleStockSubmission(@ModelAttribute("stock") Stock mStock,
 			BindingResult results, Model model, HttpServletRequest request) {
 		if (results.hasErrors()) {
 			model.addAttribute("userClickStock", true);
@@ -64,13 +70,14 @@ public class SupplierController {
 		logger.info(mStock.toString());
 		
 		if (mStock.getId() == 0) {
+			
 			stockDAO.add(mStock);
 		}
 		else {
 			stockDAO.update(mStock);
 		}
 		
-		return "redirect:/supplier/stock?operation=product";
+		return "redirect:/supplier/stock?operation=stock";
 	}
 	
 	@ModelAttribute("categories")

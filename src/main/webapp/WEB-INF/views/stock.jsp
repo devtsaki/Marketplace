@@ -65,7 +65,7 @@
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-4" for="categoryId">Select
-								Category:</label>
+								Category</label>
 							<div class="col-md-8">
 								<form:select class="form-control" id="categoryId"
 									path="categoryId" items="${categories}" itemLabel="name"
@@ -77,6 +77,7 @@
 								<input type="submit" name="submit" id="submit" value="Submit"
 									class="btn btn-primary" />
 								<form:hidden path="id" />
+								<form:hidden path="userId" />
 							</div>
 						</div>
 					</form:form>
