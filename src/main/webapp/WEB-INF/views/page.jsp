@@ -72,6 +72,11 @@
 				<%@include file="manageProducts.jsp"%>
 			</c:if>
 			
+			<!-- Supplier Content -->
+			<c:if test="${userClickStock== true}">
+				<%@include file="stock.jsp"%>
+			</c:if>
+			
 			<!-- Cart Content -->
 			<c:if test="${userClickShowCart== true}">
 				<%@include file="cart.jsp"%>

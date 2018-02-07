@@ -13,6 +13,9 @@ $(function() {
 		case "Manage Products":
 			$("#manageProducts").addClass("active");
 			break;
+		case "Sell Products":
+			$("#sellProducts").addClass("active");
+			break;
 		case "User Cart":
 			$("#userCart").addClass("active");
 			break;
@@ -261,6 +264,60 @@ $(function() {
 		});
 	}
 	
+	//STock 
+var $stockForm = $("#stockForm");
+	
+	if ($stockForm.length) {
+		$stockForm.validate({
+			rules : {
+				name : {
+					required: true,
+					minlength: 2
+				},
+				brand : {
+					required: true,
+					minlength: 2
+				},
+				description : {
+					required: true
+				},
+				unitPrice : {
+					required: true,
+					min: 2
+				},
+				quantity : {
+					required: true,
+					min: 2
+				}
+			},
+			messages : {
+				name : {
+					required: "Please enter product name!",
+					minlength: "You should try more! Two letters is the minimum!"
+				},
+				brand : {
+					required: "Please enter brand name!",
+					minlength: "You should try more! Two letters is the minimum!"
+				},
+				description : {
+					required: "Come on now! Enter a description!"
+				},
+				unitPrice : {
+					required: "Please enter unit price!",
+					min: "You should try more!"
+				},
+				quantity : {
+					required: "Please enter quantity!",
+					min: "You should try more!"
+				}
+			},
+			errorElement : "em",
+			errorPlacement: function(error, element) {
+				error.addClass("help-block");
+				error.insertAfter(element);
+			}
+		});
+	}
 	
 	// login validation
 	

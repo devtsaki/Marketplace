@@ -28,6 +28,11 @@
                         <a href="${contextRoot}/admin/products">Manage Products</a>
                     </li>
                     </security:authorize>
+                    <security:authorize access="hasAuthority('SUPPLIER')">
+                    <li id="sellProducts">
+                        <a href="${contextRoot}/supplier/stock">Sell Products</a>
+                    </li>
+                    </security:authorize>
                 </ul>
                 <ul class="nav navbar-nav pull-right">
                 	<security:authorize access="isAnonymous()">
