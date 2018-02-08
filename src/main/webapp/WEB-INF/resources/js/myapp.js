@@ -319,6 +319,106 @@ var $stockForm = $("#stockForm");
 		});
 	}
 	
+	// Supplier dataTable
+		
+		var $sellerProductsTable = $("#sellerProductsTable");
+		if ($sellerProductsTable.length) {
+			var jsonUrl = window.contextRoot + '/json/data/stock/seller/products';
+			
+			$sellerProductsTable.DataTable({
+				lengthMenu: [[10, 25, 50, -1],['10', '25' , '50', 'All']],
+				pageLength: 25,
+				order: [[1, 'asc']],
+				ajax: {
+					url: jsonUrl,
+					dataSrc: ''
+				},
+				columns: [
+					{
+						data: 'id'
+					},
+					{
+						data: "name"
+					},
+					{
+						data: "brand"
+					},
+					{
+						data: "quantity",
+						mRender: function(data, type, row) {
+							if (data < 1) {
+								return "<span style='color:red'>Out of Stock!</span>";
+							}
+							
+							return data;
+						}
+					},
+					{
+						data: "unitPrice",
+						mRender: function(data, type, row) {
+							return data + " &#8364";
+						}
+					},
+					{
+						data: "active",
+						bSortable: false,
+//						mRender: function(data, type, row) {
+//							var str= "";
+//							str = '<label class="switch">';
+//							if (data) {
+//								str += '<input type="checkbox" checked="checked" value="' + row.id + '" />';
+//							}
+//							else {
+//								str += '<input type="checkbox" value="' + row.id + '" />';
+//							}
+//							str += '<span class="slider round"></span></label>';
+//							return str;
+//						}
+					},
+					{
+						data: "id",
+						bSortable: false,
+						mRender: function (data, type, row) {
+							var str = "";
+							str += '<a href="' + window.contextRoot + '/supplier/' + data + '/product" class="btn btn-warning">';
+							str += '<span class="glyphicon glyphicon-pencil"></span></a>';
+							str += '<a id="stockDelete" data-value="' + row.id + '" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>' 
+							return str;
+						}
+					}
+				],
+				initComplete: function() {
+					var api = this.api();
+					api.$("#stockDelete").click(function() {
+						var anchor = $(this);
+						var dMsg = "Are you sure you want to delete the product?";
+						var value = anchor.prop("data-value");
+						
+						bootbox.confirm({
+							size: "medium",
+							title: "Stock Product Deletion",
+							message: dMsg,
+							callback: function(confirmed) {
+								if (confirmed) {
+									var activationUrl = window.contextRoot + "/supplier/product/" + value + "/delete";
+									
+									$.post(activationUrl, function(data) {
+										bootbox.alert({
+											size: "medium",
+											title: "Information",
+											message: data
+										});
+									});
+									
+								}
+							}
+							
+						});	
+					});
+				}
+			});
+		}
+	
 	// login validation
 	
 	var $loginForm = $("#loginForm");

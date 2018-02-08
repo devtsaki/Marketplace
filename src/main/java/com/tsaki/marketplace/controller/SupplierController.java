@@ -12,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tsaki.marketplace.dao.CategoryDAO;
@@ -78,6 +80,24 @@ public class SupplierController {
 		}
 		
 		return "redirect:/supplier/stock?operation=stock";
+	}
+	
+	@RequestMapping(value = "/{id}/product", method = RequestMethod.GET)
+	public ModelAndView showEditSellerStock(@PathVariable int id) {
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("userClickStock", true);
+		mv.addObject("title" , "Sell Products");
+		Stock newStock = stockDAO.get(id);
+		mv.addObject("stock", newStock);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/product/{id}/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public String handleSellerStockDeletion(@PathVariable("id") int id) {
+		stockDAO.delete(stockDAO.get(id));
+		return "Stock Product has been succesfully removed";
 	}
 	
 	@ModelAttribute("categories")

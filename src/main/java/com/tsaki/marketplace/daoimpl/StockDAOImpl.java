@@ -31,7 +31,7 @@ public class StockDAOImpl implements StockDAO {
 	public List<Stock> list() {
 		return sessionFactory.getCurrentSession().createQuery("FROM Stock", Stock.class).getResultList();
 	}
-
+	
 	@Override
 	public boolean add(Stock stock) {
 		try {
@@ -66,6 +66,15 @@ public class StockDAOImpl implements StockDAO {
 			ex.printStackTrace();
 			return false;
 		}
+	}
+
+	@Override
+	public List<Stock> sellerList(int userId) {
+		String selectActiveProducts = "FROM Stock WHERE userId = :userId AND active = :active";
+		return sessionFactory.getCurrentSession().createQuery(selectActiveProducts, Stock.class)
+				.setParameter("userId", userId)
+				.setParameter("active", false)
+				.getResultList();
 	}
 
 }
