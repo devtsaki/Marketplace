@@ -18,6 +18,7 @@
 	<http>
 		<intercept-url pattern="/admin/**" access="hasAuthority('ADMIN')" />
 		<intercept-url pattern="/cart/**" access="hasAuthority('USER')" />
+		<intercept-url pattern="/wishlist/**" access="hasAuthority('USER')" />
 		<intercept-url pattern="/supplier/**" access="hasAuthority('SUPPLIER')" />
 		<intercept-url pattern="/**" access="permitAll" />
 		<form-login login-page="/login" />

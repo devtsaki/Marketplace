@@ -10,6 +10,7 @@ import com.tsaki.marketplace.dao.UserDAO;
 import com.tsaki.marketplace.dto.Address;
 import com.tsaki.marketplace.dto.Cart;
 import com.tsaki.marketplace.dto.User;
+import com.tsaki.marketplace.dto.Wishlist;
 import com.tsaki.marketplace.model.RegisterModel;
 
 @Component
@@ -55,6 +56,9 @@ public class RegisterHandler {
 			Cart cart = new Cart();
 			cart.setUser(user);
 			user.setCart(cart);
+			Wishlist wishlist = new Wishlist();
+			wishlist.setUser(user);
+			user.setWishlist(wishlist);
 		}
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userDAO.addUser(user);

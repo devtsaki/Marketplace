@@ -28,6 +28,9 @@ public class User implements Serializable {
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 	private Cart cart;
 	
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	private Wishlist wishlist;
+	
 	@Column(name = "first_name")
 	@NotBlank(message = "Please enter first name!")
 	private String firstName;
@@ -64,6 +67,14 @@ public class User implements Serializable {
 
 	public void setCart(Cart cart) {
 		this.cart = cart;
+	}
+
+	public Wishlist getWishlist() {
+		return wishlist;
+	}
+
+	public void setWishlist(Wishlist wishlist) {
+		this.wishlist = wishlist;
 	}
 
 	public String getFirstName() {

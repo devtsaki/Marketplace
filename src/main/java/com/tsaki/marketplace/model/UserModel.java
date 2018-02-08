@@ -3,6 +3,7 @@ package com.tsaki.marketplace.model;
 import java.io.Serializable;
 
 import com.tsaki.marketplace.dto.Cart;
+import com.tsaki.marketplace.dto.Wishlist;
 
 public class UserModel implements Serializable {
 
@@ -14,6 +15,7 @@ public class UserModel implements Serializable {
 	private String email;
 	private String role;
 	private Cart cart;
+	private Wishlist wishlist;
 	
 	public int getId() {
 		return id;
@@ -46,6 +48,12 @@ public class UserModel implements Serializable {
 		this.cart = cart;
 	}
 	
+	public Wishlist getWishlist() {
+		return wishlist;
+	}
+	public void setWishlist(Wishlist wishlist) {
+		this.wishlist = wishlist;
+	}
 	@Override
 	public String toString() {
 		return "UserModel [id=" + id + ", fullName=" + fullName + ", email=" + email + ", role=" + role + ", cart="

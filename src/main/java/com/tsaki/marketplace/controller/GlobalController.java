@@ -38,6 +38,7 @@ public class GlobalController {
 				
 				if (userModel.getRole().equals("USER")) {
 					userModel.setCart(user.getCart());
+					userModel.setWishlist(user.getWishlist());
 				}
 				
 				session.setAttribute("userModel", userModel);

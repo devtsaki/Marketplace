@@ -33,6 +33,11 @@
                         <a href="${contextRoot}/supplier/stock">Sell Products</a>
                     </li>
                     </security:authorize>
+                    <security:authorize access="hasAuthority('USER')">
+                    <li id="userWishlist">
+                        <a href="${contextRoot}/wishlist/show">Wishlist</a>
+                    </li>
+                    </security:authorize>
                 </ul>
                 <ul class="nav navbar-nav pull-right">
                 	<security:authorize access="isAnonymous()">

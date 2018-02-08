@@ -19,6 +19,9 @@ $(function() {
 		case "User Cart":
 			$("#userCart").addClass("active");
 			break;
+		case "User Wishlist":
+			$("#userWishlist").addClass("active");
+			break;
 		default:
 			if (menu == "Home") {
 				break;
@@ -100,8 +103,9 @@ $(function() {
 						} else {													
 							if (row.quantity < 1) {
 								str += "<a href='javascript:void(0)' class='btn btn-success disabled'><span class='glyphicon glyphicon-shopping-cart'></span></a>"; 
-							} else {	
-									str += "<a href='"+ window.contextRoot +"/cart/add/"+ data +"/product' class='btn btn-success'><span class='glyphicon glyphicon-shopping-cart'></span></a>";									
+							} else {
+								str += "<a href='"+ window.contextRoot +"/wishlist/add/"+ data +"/product' class='btn btn-warning'><span class='glyphicon glyphicon-heart'></span></a>";
+								str += "<a href='"+ window.contextRoot +"/cart/add/"+ data +"/product' class='btn btn-success'><span class='glyphicon glyphicon-shopping-cart'></span></a>";									
 							}
 						
 						}
@@ -328,7 +332,7 @@ var $stockForm = $("#stockForm");
 			$sellerProductsTable.DataTable({
 				lengthMenu: [[10, 25, 50, -1],['10', '25' , '50', 'All']],
 				pageLength: 25,
-				order: [[1, 'asc']],
+				order: [[0, 'asc']],
 				ajax: {
 					url: jsonUrl,
 					dataSrc: ''
@@ -392,7 +396,7 @@ var $stockForm = $("#stockForm");
 					api.$("#stockDelete").click(function() {
 						var anchor = $(this);
 						var dMsg = "Are you sure you want to delete the product?";
-						var value = anchor.prop("data-value");
+						var value = anchor.data("value");
 						
 						bootbox.confirm({
 							size: "medium",
@@ -403,12 +407,15 @@ var $stockForm = $("#stockForm");
 									var activationUrl = window.contextRoot + "/supplier/product/" + value + "/delete";
 									
 									$.post(activationUrl, function(data) {
+										console.log(data);
 										bootbox.alert({
 											size: "medium",
 											title: "Information",
 											message: data
 										});
 									});
+									var updateUrl = window.contextRoot + '/supplier/stock';
+									window.location.href = updateUrl;
 									
 								}
 							}
