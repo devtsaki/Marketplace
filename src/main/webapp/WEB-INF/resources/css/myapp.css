@@ -6,6 +6,7 @@ html {
 body {
 	padding-top: 70px;
 	height: 100%;
+
 }
 
 .navbar {
@@ -17,23 +18,10 @@ body {
 	text-align: center;
 }
 
-.panel-heading > h4 {
+.panel-heading>h4 {
 	margin: auto;
 }
 
-
-
-.slide-image {
-	width: 100%;
-}
-
-.carousel-holder {
-	margin-bottom: 30px;
-}
-
-.carousel-control, .item {
-	border-radius: 4px;
-}
 
 .caption {
 	height: 130px;
@@ -70,7 +58,6 @@ footer {
 /*
 Custom style 
 */
-
 .table-responsive {
 	overflow-x: inherit;
 }
@@ -94,8 +81,8 @@ Custom style
 	width: 100px;
 	height: 100px;
 	display: block;
-    margin-left: auto;
-    margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 input {
@@ -173,44 +160,54 @@ input:checked+.slider:before {
 	border-radius: 50%;
 }
 
-.table>tbody>tr>td, .table>tfoot>tr>td{
-    vertical-align: middle;
+.table>tbody>tr>td, .table>tfoot>tr>td {
+	vertical-align: middle;
 }
+
 @media screen and (max-width: 600px) {
-    table#cart tbody td .form-control{
-		width:20%;
+	table#cart tbody td .form-control {
+		width: 20%;
 		display: inline !important;
 	}
-	.actions .btn{
-		width:36%;
-		margin:1.5em 0;
+	.actions .btn {
+		width: 36%;
+		margin: 1.5em 0;
 	}
-	
-	.actions .btn-info{
-		float:left;
+	.actions .btn-info {
+		float: left;
 	}
-	.actions .btn-danger{
-		float:right;
+	.actions .btn-danger {
+		float: right;
 	}
-	
-	table#cart thead { display: none; }
-	table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
-	table#cart tbody tr td:first-child { background: #333; color: #fff; }
+	table#cart thead {
+		display: none;
+	}
+	table#cart tbody td {
+		display: block;
+		padding: .6rem;
+		min-width: 320px;
+	}
+	table#cart tbody tr td:first-child {
+		background: #333;
+		color: #fff;
+	}
 	table#cart tbody td:before {
-		content: attr(data-th); font-weight: bold;
-		display: inline-block; width: 8rem;
+		content: attr(data-th);
+		font-weight: bold;
+		display: inline-block;
+		width: 8rem;
 	}
-	
-	
-	
-	table#cart tfoot td{display:block; }
-	table#cart tfoot td .btn{display:block;}
-	
+	table#cart tfoot td {
+		display: block;
+	}
+	table#cart tfoot td .btn {
+		display: block;
+	}
 }
 
 .cartImg {
 	width: 100px;
-	height:100px;
+	height: 100px;
 }
 
 .unavailable {
@@ -218,7 +215,6 @@ input:checked+.slider:before {
 }
 
 /* Readable*/
-
 .navbar-inverse .navbar-brand {
 	color: #ffffff
 }
@@ -261,7 +257,6 @@ input:checked+.slider:before {
 	color: #ffffff
 }
 
-
 .navbar {
 	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif
 }
@@ -300,7 +295,6 @@ input:checked+.slider:before {
 	line-height: 1.9
 }
 
-
 .btn-default {
 	color: #333333;
 	background-color: transparent;
@@ -308,35 +302,41 @@ input:checked+.slider:before {
 }
 
 /* cart checkout */
-.panel-title {display: inline;font-weight: bold;}
-.checkbox.pull-right { margin: 0; }
-.pl-ziro { padding-left: 0px; }
+.panel-title {
+	display: inline;
+	font-weight: bold;
+}
+
+.checkbox.pull-right {
+	margin: 0;
+}
+
+.pl-ziro {
+	padding-left: 0px;
+}
 
 /* order receipt */
 .invoice-title h2, .invoice-title h3 {
-    display: inline-block;
+	display: inline-block;
 }
 
-.table > tbody > tr > .no-line {
-    border-top: none;
+.table>tbody>tr>.no-line {
+	border-top: none;
 }
 
-.table > thead > tr > .no-line {
-    border-bottom: none;
+.table>thead>tr>.no-line {
+	border-bottom: none;
 }
 
-.table > tbody > tr > .thick-line {
-    border-top: 2px solid;
+.table>tbody>tr>.thick-line {
+	border-top: 2px solid;
 }
-
 
 /* landing css */
-
 .landingImg {
 	width: auto;
-	height : 180px !important;
+	height: 180px !important;
 }
-
 
 .img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img,
 	.carousel-inner>.item>a>img {
@@ -345,13 +345,12 @@ input:checked+.slider:before {
 	height: auto;
 }
 
-
-.se-pre-con{
-		position:fixed;
-		left:0;
-		top:0;
-		width:98%;
-		height:100%;
-		z-index:9999;
-		background:url(../images/pre-loader.gif) 50% no-repeat #fff ;
+.se-pre-con {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 98%;
+	height: 100%;
+	z-index: 9999;
+	background: url(../images/pre-loader.gif) 50% no-repeat #fff;
 }

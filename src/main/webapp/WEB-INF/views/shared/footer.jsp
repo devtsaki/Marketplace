@@ -1,4 +1,4 @@
-    <div class="container footer">
+    <div class="container footer col-sm-12">
         <hr>
         <!-- Footer -->
         <footer>

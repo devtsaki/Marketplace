@@ -2,7 +2,11 @@
 <%@include file="../shared/flows-header.jsp"%>
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-6">
+			<img src="<c:url value="/resources/images/reg2.png"/>"
+				class=".img-responsive" alt="Supplier">
+		</div>
+		<div class="col-md-6">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h4>Sign Up - Address</h4>

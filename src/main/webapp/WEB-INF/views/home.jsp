@@ -3,118 +3,131 @@
 
 <!-- DataTable Bootstrap Script -->
 <script src="<c:url value="/resources/js/productsController.js"/>"></script>
-<div class="container" ng-app="ShoppingApp" ng-controller="ProductController as pCtrl" >
+<div class="container" ng-app="ShoppingApp"
+	ng-controller="ProductController as pCtrl">
 
 	<div class="row" ng-init="pCtrl.fetchProducts()">
 
-		<div class="col-md-3">
-			<%@include file="./shared/sidebar.jsp"%>
-		</div>
 
-		<div class="col-md-9">
 
-			<div class="row carousel-holder">
+		
+			<div id="carousel-example" class="carousel slide"
+				data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example" data-slide-to="0"
+						class="active"></li>
+					<li data-target="#carousel-example" data-slide-to="1"></li>
+					<li data-target="#carousel-example" data-slide-to="2"></li>
+					<li data-target="#carousel-example" data-slide-to="3"></li>
+				</ol>
 
-				<div class="col-md-12">
-					<div id="carousel-example-generic" class="carousel slide"
-						data-ride="carousel">
-						<ol class="carousel-indicators">
-							<li data-target="#carousel-example-generic" data-slide-to="0"
-								class="active"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="3"></li>
-						</ol>
-						<div class="carousel-inner">
-							
-							<div class="item active">
-								<img class="slide-image" src="<c:url value="/resources/images/banner1.jpg"/>"
-									alt="">
-							</div>
-							<div class="item">
-								<img class="slide-image" src="<c:url value="/resources/images/banner2.jpg"/>"
-									alt="">
-							</div>
-							<div class="item">
-								<img class="slide-image" src="<c:url value="/resources/images/banner3.jpg"/>"
-									alt="">
-							</div>
-							<div class="item">
-								<img class="slide-image" src="<c:url value="/resources/images/banner4.jpg"/>"
-									alt="">
-							</div>
+				<div class="carousel-inner">
+					<div class="item active">
+						<a href="#"><img src="<c:url value="/resources/images/banner1.png"/>" /></a>
+						<div class="carousel-caption">
+							<h3>Meow</h3>
+							<p>Just Kitten Around</p>
 						</div>
-						<a class="left carousel-control" href="#carousel-example-generic"
-							data-slide="prev"> <span
-							class="glyphicon glyphicon-chevron-left"></span>
-						</a> <a class="right carousel-control"
-							href="#carousel-example-generic" data-slide="next"> <span
-							class="glyphicon glyphicon-chevron-right"></span>
-						</a>
 					</div>
+					<div class="item">
+						<a href="#"><img src="<c:url value="/resources/images/banner2.jpg"/>" /></a>
+						<div class="carousel-caption">
+							<h3>Meow</h3>
+							<p>Just Kitten Around</p>
+						</div>
+					</div>
+					<div class="item">
+						<a href="#"><img src="<c:url value="/resources/images/banner3.jpg"/>" /></a>
+						<div class="carousel-caption">
+							<h3>Meow</h3>
+							<p>Just Kitten Around</p>
+						</div>
+					</div>
+					<div class="item">
+						<a href="#"><img src="<c:url value="/resources/images/banner4.jpg"/>" /></a>
+						<div class="carousel-caption">
+							<h3>Meow</h3>
+							<p>Just Kitten Around</p>
+						</div>
+					</div>
+				</div>
+
+				<a class="left carousel-control" href="#carousel-example"
+					data-slide="prev"> <span
+					class="glyphicon glyphicon-chevron-left"></span>
+				</a> <a class="right carousel-control" href="#carousel-example"
+					data-slide="next"> <span
+					class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+			</div>
+			<div class="col-md-offset-1 col-md-10">
+			<div class="row">
+				<div class="col-sm-12">
+					<h3>Our Most Viewed Products</h3>
+					<hr />
+				</div>
+			</div>
+
+			<div class="row is-table-row text-center">
+
+				<div class="col-md-3 col-sm-4" ng-repeat="product in pCtrl.mvProducts">
+					<div class="thumbnail">
+						<img
+							ng-src="<c:url value="/resources/images/{{product.code}}.jpg"/>"
+							alt="{{product.name}}" class="landingImg">
+						<h5>{{product.name}}</h5>
+						<hr />
+						<div class="caption">
+							<h4>{{product.unitPrice}} &#8364;</h4>
+							<p>{{product.description}}</p>
+							<a ng-href="${contextRoot}/show/{{product.id}}/product"
+								class="btn btn-primary btn-block">View</a>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-sm-12">
+					<h4>Checkout more products!</h4>
+					<hr />
+					<a class="btn btn-warning btn-block"
+						href="${contextRoot}/show/all/products">More Products</a>
 				</div>
 
 			</div>
 
-				<div class="row">
-                	<div class="col-xs-12">
-                		<h3>Our Most Viewed Products</h3>
-                		<hr/>
-                	</div>
-                </div>
+			<div class="row text-center">
+				<div class="col-xs-12">
+					<h3>Our Most Purchased Products</h3>
+					<hr />
+				</div>
+			</div>
+			<div class="row is-table-row text-center">
 
-                <div class="row is-table-row">
-                	
-                    <div class="col-sm-4" ng-repeat="product in pCtrl.mvProducts">                    	
-                        <div class="thumbnail">
-                            <img ng-src="<c:url value="/resources/images/{{product.code}}.jpg"/>" alt="{{product.name}}" class="landingImg">
-                            <h5>{{product.name}}</h5>
-                            <hr/>
-                            <div class="caption">
-                                <h4 class="pull-right">{{product.unitPrice}} &#8364;</h4>
-                                <p>{{product.description}}</p>
-                                <a ng-href="${contextRoot}/show/{{product.id}}/product" class="btn btn-primary pull-right">View</a>
-                            </div>
-                        </div>
-                        
-                    </div>
+				<div class="col-md-3 col-sm-4" ng-repeat="product in pCtrl.mpProducts">
+					<div class="thumbnail">
+						<img
+							ng-src="<c:url value="/resources/images/{{product.code}}.jpg"/>"
+							alt="{{product.name}}" class="landingImg">
+						<h5>{{product.name}}</h5>
+						<hr />
+						<div class="caption">
+							<h4>{{product.unitPrice}} &#8364;</h4>
+							<p>{{product.description}}</p>
+							<a ng-href="${contextRoot}/show/{{product.id}}/product"
+								class="btn btn-primary btn-block">View</a>
+						</div>
+					</div>
+				</div>
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <h4>Checkout more products!</h4>
-                        <hr/>
-                        <a class="btn btn-primary" href="${contextRoot}/show/all/products">More Products</a>
-                    </div>
+				<div class="col-sm-12 text-center">
+					<h4>Checkout more products!</h4>
+					<hr />
+					<a class="btn btn-warning btn-block"
+						href="${contextRoot}/show/all/products">More Products</a>
+				</div>
 
-                </div>
-				
-				<div class="row">
-                	<div class="col-xs-12">
-                		<h3>Our Most Purchased Products</h3>
-                		<hr/>
-                	</div>
-                </div>
-               <div class="row is-table-row">
-                	
-                    <div class="col-sm-4" ng-repeat="product in pCtrl.mpProducts">                    	
-                        <div class="thumbnail">
-                            <img ng-src="<c:url value="/resources/images/{{product.code}}.jpg"/>" alt="{{product.name}}" class="landingImg">
-                            <h5>{{product.name}}</h5>
-                            <hr/>
-                            <div class="caption">
-                                <h4 class="pull-right">{{product.unitPrice}} &#8364;</h4>
-                                <p>{{product.description}}</p>
-                                <a ng-href="${contextRoot}/show/{{product.id}}/product" class="btn btn-primary pull-right">View</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <h4>Checkout more products!</h4>
-                        <hr/>
-                        <a class="btn btn-primary" href="${contextRoot}/show/all/products">More Products</a>
-                    </div>
-
-                </div>
+			</div>
 
 		</div>
 

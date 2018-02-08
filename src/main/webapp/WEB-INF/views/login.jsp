@@ -16,6 +16,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="_csrf" content="${_csrf.token}">
 <meta name="_csrf_header" content="${_csrf.headerName}"/>
+<style>
+body {
+	background-image: url("<c:url value="/resources/images/sec.png"/>");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+</style>
 
 <title>Marketplace - ${title}</title>
 <script>
