@@ -2,6 +2,7 @@ package com.tsaki.marketplace.model;
 
 import java.io.Serializable;
 
+import com.tsaki.marketplace.dto.BankAccount;
 import com.tsaki.marketplace.dto.Cart;
 import com.tsaki.marketplace.dto.Wishlist;
 
@@ -16,6 +17,7 @@ public class UserModel implements Serializable {
 	private String role;
 	private Cart cart;
 	private Wishlist wishlist;
+	private BankAccount bankAccount;;
 	
 	public int getId() {
 		return id;
@@ -40,6 +42,13 @@ public class UserModel implements Serializable {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	
+	public BankAccount getBankAccount() {
+		return bankAccount;
+	}
+	public void setBankAccount(BankAccount bankAccount) {
+		this.bankAccount = bankAccount;
 	}
 	public Cart getCart() {
 		return cart;

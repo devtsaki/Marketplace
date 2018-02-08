@@ -99,12 +99,12 @@ $(function() {
 						var str = "";
 						str += "<a href='"+ window.contextRoot +"/show/"+ data +"/product' class='btn btn-primary'><span class='glyphicon glyphicon-eye-open'></span></a> &#160";
 						if (userRole == "ADMIN") {
-							str += "<a href='"+ window.contextRoot +"/admin/"+ data +"/product' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a>";
+							str += "<a href='"+ window.contextRoot +"/admin/"+ data +"/product' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a> &#160";
 						} else {													
 							if (row.quantity < 1) {
 								str += "<a href='javascript:void(0)' class='btn btn-success disabled'><span class='glyphicon glyphicon-shopping-cart'></span></a>"; 
 							} else {
-								str += "<a href='"+ window.contextRoot +"/wishlist/add/"+ data +"/product' class='btn btn-warning'><span class='glyphicon glyphicon-heart'></span></a>";
+								str += "<a href='"+ window.contextRoot +"/wishlist/add/"+ data +"/product' class='btn btn-warning'><span class='glyphicon glyphicon-heart'></span></a> &#160";
 								str += "<a href='"+ window.contextRoot +"/cart/add/"+ data +"/product' class='btn btn-success'><span class='glyphicon glyphicon-shopping-cart'></span></a>";									
 							}
 						
@@ -235,6 +235,113 @@ $(function() {
 			}
 		});
 	}
+	
+	//Admin stock table
+	var $adminStockTable = $("#adminStockTable");
+	if ($adminStockTable.length) {
+		var jsonUrl = window.contextRoot + '/json/data/stock/admin/products';
+		
+		$adminStockTable.DataTable({
+			retrieve: true,
+		    paging: false,
+			lengthMenu: [[10, 25, 50, -1],['10', '25' , '50', 'All']],
+			pageLength: 25,
+			order: [[1, 'asc']],
+			ajax: {
+				url: jsonUrl,
+				dataSrc: ''
+			},
+			columns: [
+				{
+					data: 'id'
+				},
+				{
+					data: "name"
+				},
+				{
+					data: "brand"
+				},
+				{
+					data: "quantity",
+					mRender: function(data, type, row) {
+						if (data < 1) {
+							return "<span style='color:red'>Out of Stock!</span>";
+						}
+						
+						return data;
+					}
+				},
+				{
+					data: "unitPrice",
+					mRender: function(data, type, row) {
+						return data + " &#8364";
+					}
+				},
+				{
+					data: "userId"
+				},
+				{
+					data: "active",
+					bSortable: false,
+					mRender: function(data, type, row) {
+						var str= "";
+						str = '<label class="switch">';
+						if (data) {
+							str += '<input type="checkbox" checked="checked" value="' + row.id + '" />';
+						}
+						else {
+							str += '<input type="checkbox" value="' + row.id + '" />';
+						}
+						str += '<span class="slider round"></span></label>';
+						return str;
+					}
+				},
+				{
+					data: "id",
+					bSortable: false,
+					mRender: function (data, type, row) {
+						var str = "";
+						str += '<a id="stockDelete" data-value="' + row.id + '" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>';
+						return str;
+					}
+				}
+			],
+			initComplete: function() {
+				var api = this.api();
+				api.$(".switch input[type='checkbox']").on("change", function() {
+					var checkbox = $(this);
+					var checked = checkbox.prop("checked");
+					var dMsg = (checked) ? "Are you sure you want to activate the product?" : "Are you sure you want to deactivate the product?";
+					var value = checkbox.prop("value");
+					
+					bootbox.confirm({
+						size: "medium",
+						title: "Product Activation/Deactivation",
+						message: dMsg,
+						callback: function(confirmed) {
+							if (confirmed) {
+								var activationUrl = window.contextRoot + "/admin/product/" + value + "/activation";
+								
+								$.post(activationUrl, function(data) {
+									bootbox.alert({
+										size: "medium",
+										title: "Information",
+										message: data
+									});
+								});
+								
+							}
+							else {
+								checkbox.prop("checked", !checked);
+							}
+						}
+						
+					});	
+				});
+			}
+		});
+	}
+	
 	
 	// category validation
 	

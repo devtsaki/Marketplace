@@ -3,6 +3,7 @@ package com.tsaki.marketplace.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -19,10 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tsaki.marketplace.dao.BankAccountDAO;
 import com.tsaki.marketplace.dao.CategoryDAO;
 import com.tsaki.marketplace.dao.ProductDAO;
+import com.tsaki.marketplace.dto.BankAccount;
 import com.tsaki.marketplace.dto.Category;
 import com.tsaki.marketplace.dto.Product;
+import com.tsaki.marketplace.model.UserModel;
 import com.tsaki.marketplace.util.FileUploadUtility;
 import com.tsaki.marketplace.validator.ProductValidator;
 
@@ -36,6 +40,12 @@ public class AdminController {
 	@Autowired
 	private ProductDAO productDAO;
 	
+	@Autowired
+	private BankAccountDAO bankAccountDAO;
+	
+	@Autowired
+	HttpSession session;
+	
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
 	@RequestMapping(value = "/products", method = RequestMethod.GET)
@@ -45,8 +55,10 @@ public class AdminController {
 		mv.addObject("title" , "Manage Products");
 		Product newProduct = new Product();
 		newProduct.setSupplierId(1);
-		
 		mv.addObject("product", newProduct);
+		UserModel user = (UserModel) session.getAttribute("userModel");
+		BankAccount bankAccount = bankAccountDAO.get(user.getId());
+		mv.addObject("bankAccount", bankAccount);
 		if (operation != null) {
 			if (operation.equals("product")) {
 				mv.addObject("message", "Product Submitted Successfully!");

@@ -9,7 +9,7 @@
 				</div>
 			</div>
 		</c:if>
-		<div class="col-md-offset-2 col-md-8">
+		<div class="col-md-6">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h4>Product Management Panel</h4>
@@ -105,6 +105,20 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-md-6 text-center">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4>BankAccounts Panel</h4>
+				</div>
+				<div class="panel-body">
+				<label>Available Amount</label>
+					<h4>${bankAccount.amount} &#8364;</h4>
+				</div>
+			</div>
+			<div class="col-md-6">
+				 <img src="<c:url value="/resources/images/admin.jpg"/>" class=".img-responsive" alt="Admin"> 
+			</div>
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
@@ -187,4 +201,45 @@
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>Buy From Suppliers</h3>
+			<hr />
+		</div>
+		<div class="col-xs-12">
+			<div class="container-fluid">
+				<div class="table-responsive">
+					<table id="adminStockTable"
+						class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Name</th>
+								<th>Brand</th>
+								<th>Quantity</th>
+								<th>Unit Price</th>
+								<th>Id</th>
+								<th>Active</th>
+								<th>Edit</th>
+							</tr>
+						</thead>
+
+						<tfoot>
+							<tr>
+								<th>Id</th>
+								<th>Name</th>
+								<th>Brand</th>
+								<th>Quantity</th>
+								<th>Unit Price</th>
+								<th>Id</th>
+								<th>Active</th>
+								<th>Edit</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+

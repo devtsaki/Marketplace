@@ -1,13 +1,17 @@
 package com.tsaki.marketplace.handler;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import com.tsaki.marketplace.controller.PageController;
 import com.tsaki.marketplace.dao.UserDAO;
 import com.tsaki.marketplace.dto.Address;
+import com.tsaki.marketplace.dto.BankAccount;
 import com.tsaki.marketplace.dto.Cart;
 import com.tsaki.marketplace.dto.User;
 import com.tsaki.marketplace.dto.Wishlist;
@@ -21,6 +25,8 @@ public class RegisterHandler {
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
 	
 	public RegisterModel init() {
 		return new RegisterModel();
@@ -52,6 +58,7 @@ public class RegisterHandler {
 	public String saveAll(RegisterModel model) {
 		String transitionValue = "success";
 		User user = model.getUser();
+		
 		if (user.getRole().equals("USER")) {
 			Cart cart = new Cart();
 			cart.setUser(user);
@@ -59,9 +66,16 @@ public class RegisterHandler {
 			Wishlist wishlist = new Wishlist();
 			wishlist.setUser(user);
 			user.setWishlist(wishlist);
+		} else {
+			BankAccount bankAccount = new BankAccount();
+			bankAccount.setUser(user);
+			user.setBankAccount(bankAccount);
+			logger.info(bankAccount.toString());
 		}
+		
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userDAO.addUser(user);
+		logger.info(user.toString());
 		Address billing = model.getBilling();
 		billing.setUser(user);
 		billing.setBilling(true);

@@ -48,6 +48,12 @@ public class JsonDataController {
 		return stockDAO.sellerList(user.getId());
 	}
 	
+	@RequestMapping("/stock/admin/products")
+	@ResponseBody
+	public List<Stock> getSellerAdminProducts() {
+		return stockDAO.adminStockList();
+	}
+	
 	@RequestMapping("/category/{id}/products")
 	@ResponseBody
 	public List<Product> getAllProductsByCategory(@PathVariable int id) {		

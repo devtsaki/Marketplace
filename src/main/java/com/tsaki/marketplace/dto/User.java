@@ -29,6 +29,9 @@ public class User implements Serializable {
 	private Cart cart;
 	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	private BankAccount bankAccount;
+	
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 	private Wishlist wishlist;
 	
 	@Column(name = "first_name")
@@ -63,6 +66,14 @@ public class User implements Serializable {
 
 	public Cart getCart() {
 		return cart;
+	}
+
+	public BankAccount getBankAccount() {
+		return bankAccount;
+	}
+
+	public void setBankAccount(BankAccount bankAccount) {
+		this.bankAccount = bankAccount;
 	}
 
 	public void setCart(Cart cart) {

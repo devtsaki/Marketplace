@@ -3,7 +3,10 @@ package com.tsaki.marketplace.model;
 import java.io.Serializable;
 
 import com.tsaki.marketplace.dto.Address;
+import com.tsaki.marketplace.dto.BankAccount;
+import com.tsaki.marketplace.dto.Cart;
 import com.tsaki.marketplace.dto.User;
+import com.tsaki.marketplace.dto.Wishlist;
 
 public class RegisterModel implements Serializable {
 
@@ -11,6 +14,9 @@ public class RegisterModel implements Serializable {
 
 	private User user;
 	private Address billing;
+	private Cart cart;
+	private Wishlist wishlist;
+	private BankAccount bankAccount;
 	
 	public User getUser() {
 		return user;
@@ -27,6 +33,28 @@ public class RegisterModel implements Serializable {
 	public void setBilling(Address billing) {
 		this.billing = billing;
 	}
-	
-	
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+	public Wishlist getWishlist() {
+		return wishlist;
+	}
+
+	public void setWishlist(Wishlist wishlist) {
+		this.wishlist = wishlist;
+	}
+
+	public BankAccount getBankAccount() {
+		return bankAccount;
+	}
+
+	public void setBankAccount(BankAccount bankAccount) {
+		this.bankAccount = bankAccount;
+	}
 }

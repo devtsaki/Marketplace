@@ -9,7 +9,7 @@
 				</div>
 			</div>
 		</c:if>
-		<div class="col-md-offset-2 col-md-8">
+		<div class="col-md-6">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h4>Supplier Stock Panel</h4>
@@ -84,6 +84,20 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-md-6 text-center">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4>BankAccounts Panel</h4>
+				</div>
+				<div class="panel-body">
+				<label>Available Amount</label>
+					<h4>${bankAccount.amount} &#8364;</h4>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+				 <img src="<c:url value="/resources/images/supplier.svg"/>" class=".img-responsive" alt="Supplier"> 
+			</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">

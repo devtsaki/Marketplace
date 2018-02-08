@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tsaki.marketplace.dao.BankAccountDAO;
 import com.tsaki.marketplace.dao.CategoryDAO;
 import com.tsaki.marketplace.dao.StockDAO;
+import com.tsaki.marketplace.dto.BankAccount;
 import com.tsaki.marketplace.dto.Category;
 import com.tsaki.marketplace.dto.Stock;
 import com.tsaki.marketplace.model.UserModel;
@@ -36,7 +38,10 @@ public class SupplierController {
 	private StockDAO stockDAO;
 	
 	@Autowired
-	HttpSession session;
+	private BankAccountDAO bankAccountDAO;
+	
+	@Autowired
+	private HttpSession session;
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(SupplierController.class);
@@ -48,6 +53,8 @@ public class SupplierController {
 		mv.addObject("title" , "Sell Products");
 		UserModel user = (UserModel) session.getAttribute("userModel");
 		Stock newStock = new Stock();
+		BankAccount bankAccount = bankAccountDAO.get(user.getId());
+		mv.addObject("bankAccount", bankAccount);
 		newStock.setUserId(user.getId());
 		logger.info(newStock.toString());
 		mv.addObject("stock", newStock);
@@ -92,6 +99,17 @@ public class SupplierController {
 		
 		return mv;
 	}
+	
+//	@RequestMapping(value="/stock/{id}/activation", method = RequestMethod.POST)
+//	@ResponseBody
+//	public String handleStockActivation(@PathVariable("id") int id) {
+//		Product product = productDAO.get(id);
+//		boolean isActive = product.isActive();
+//		product.setActive(!isActive);
+//		productDAO.update(product);
+//		return (isActive)? "Product with id " + product.getId() + " has been succesfully deactivated" : "Product with id "
+//			+ product.getId() + " has been succesfully activated";
+//	}
 	
 	@RequestMapping(value="/product/{id}/delete", method = RequestMethod.POST)
 	@ResponseBody

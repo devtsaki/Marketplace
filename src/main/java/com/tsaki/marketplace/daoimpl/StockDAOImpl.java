@@ -77,4 +77,12 @@ public class StockDAOImpl implements StockDAO {
 				.getResultList();
 	}
 
+	@Override
+	public List<Stock> adminStockList() {
+		String selectActiveProducts = "FROM Stock WHERE active = :active";
+		return sessionFactory.getCurrentSession().createQuery(selectActiveProducts, Stock.class)
+				.setParameter("active", false)
+				.getResultList();
+	}
+
 }
