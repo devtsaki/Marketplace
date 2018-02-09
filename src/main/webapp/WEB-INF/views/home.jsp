@@ -23,31 +23,31 @@
 
 				<div class="carousel-inner">
 					<div class="item active">
-						<a href="#"><img src="<c:url value="/resources/images/banner1.png"/>" /></a>
+						<a href="#"><img src="<c:url value="/resources/images/banner1.jpg"/>" /></a>
 						<div class="carousel-caption">
-							<h3>Meow</h3>
-							<p>Just Kitten Around</p>
+							<h3>What is it, Major Lawrence, that attracts you personally to the desert? </h3>
+							<p>It's clean.</p>
 						</div>
 					</div>
 					<div class="item">
 						<a href="#"><img src="<c:url value="/resources/images/banner2.jpg"/>" /></a>
 						<div class="carousel-caption">
-							<h3>Meow</h3>
-							<p>Just Kitten Around</p>
+							<h3>This is some rescue! You came in here, but didn't you have a plan for getting out?</h3>
+							<p>He's the brains, sweetheart!</p>
 						</div>
 					</div>
 					<div class="item">
 						<a href="#"><img src="<c:url value="/resources/images/banner3.jpg"/>" /></a>
 						<div class="carousel-caption">
-							<h3>Meow</h3>
-							<p>Just Kitten Around</p>
+							<h3>Hey, Doc, we better back up. We don't have enough road to get up to 88. </h3>
+							<p>Roads? Where we're going, we don't need roads.</p>
 						</div>
 					</div>
 					<div class="item">
 						<a href="#"><img src="<c:url value="/resources/images/banner4.jpg"/>" /></a>
 						<div class="carousel-caption">
-							<h3>Meow</h3>
-							<p>Just Kitten Around</p>
+							<h3>What are you talking about, HAL?</h3>
+							<p>This mission is too important for me to allow you to jeopardize it.</p>
 						</div>
 					</div>
 				</div>
