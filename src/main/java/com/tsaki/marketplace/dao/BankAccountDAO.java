@@ -9,5 +9,5 @@ public interface BankAccountDAO {
 	boolean addBankAccount(BankAccount bankAccount);
 	BankAccount getByEmail(String email);
 	double getAmount(User user);
-	boolean updateAmount(double amount);
+	boolean updateAccount(BankAccount bankAccount);
 }

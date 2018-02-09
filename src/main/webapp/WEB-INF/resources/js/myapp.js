@@ -311,16 +311,16 @@ $(function() {
 				api.$(".switch input[type='checkbox']").on("change", function() {
 					var checkbox = $(this);
 					var checked = checkbox.prop("checked");
-					var dMsg = (checked) ? "Are you sure you want to activate the product?" : "Are you sure you want to deactivate the product?";
+					var dMsg = (checked) ? "Are you sure you want to activate the stock product?" : "Are you sure you want to deactivate the stock?";
 					var value = checkbox.prop("value");
 					
 					bootbox.confirm({
 						size: "medium",
-						title: "Product Activation/Deactivation",
+						title: "Stock Activation/",
 						message: dMsg,
 						callback: function(confirmed) {
 							if (confirmed) {
-								var activationUrl = window.contextRoot + "/admin/product/" + value + "/activation";
+								var activationUrl = window.contextRoot + "/admin/stock/" + value + "/activation";
 								
 								$.post(activationUrl, function(data) {
 									bootbox.alert({
@@ -329,10 +329,42 @@ $(function() {
 										message: data
 									});
 								});
+								var updateUrl = window.contextRoot + '/admin/products';
+								window.location.href = updateUrl;
 								
 							}
 							else {
 								checkbox.prop("checked", !checked);
+							}
+						}
+						
+					});	
+				});
+				var api2 = this.api();
+				api2.$("#stockDelete").click(function() {
+					var anchor = $(this);
+					var dMsg = "Are you sure you want to delete the product?";
+					var value = anchor.data("value");
+					
+					bootbox.confirm({
+						size: "medium",
+						title: "Stock Product Deletion",
+						message: dMsg,
+						callback: function(confirmed) {
+							if (confirmed) {
+								var activationUrl = window.contextRoot + "/admin/stock/" + value + "/delete";
+								
+								$.post(activationUrl, function(data) {
+									console.log(data);
+									bootbox.alert({
+										size: "medium",
+										title: "Information",
+										message: data
+									});
+								});
+								var updateUrl = window.contextRoot + '/admin/products';
+								window.location.href = updateUrl;
+								
 							}
 						}
 						

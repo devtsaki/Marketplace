@@ -62,9 +62,9 @@ public class BankAccountDAOImpl implements BankAccountDAO {
 	}
 
 	@Override
-	public boolean updateAmount(double amount) {
+	public boolean updateAccount(BankAccount bankAccount) {
 		try {
-			sessionFactory.getCurrentSession().update(amount);
+			sessionFactory.getCurrentSession().update(bankAccount);
 			return true;
 		} catch (Exception ex) {
 			return false;

@@ -23,9 +23,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tsaki.marketplace.dao.BankAccountDAO;
 import com.tsaki.marketplace.dao.CategoryDAO;
 import com.tsaki.marketplace.dao.ProductDAO;
+import com.tsaki.marketplace.dao.StockDAO;
 import com.tsaki.marketplace.dto.BankAccount;
 import com.tsaki.marketplace.dto.Category;
 import com.tsaki.marketplace.dto.Product;
+import com.tsaki.marketplace.dto.Stock;
 import com.tsaki.marketplace.model.UserModel;
 import com.tsaki.marketplace.util.FileUploadUtility;
 import com.tsaki.marketplace.validator.ProductValidator;
@@ -39,6 +41,9 @@ public class AdminController {
 	
 	@Autowired
 	private ProductDAO productDAO;
+	
+	@Autowired
+	private StockDAO stockDAO;
 	
 	@Autowired
 	private BankAccountDAO bankAccountDAO;
@@ -125,6 +130,37 @@ public class AdminController {
 		productDAO.update(product);
 		return (isActive)? "Product with id " + product.getId() + " has been succesfully deactivated" : "Product with id "
 			+ product.getId() + " has been succesfully activated";
+	}
+	
+	@RequestMapping(value="/stock/{id}/activation", method = RequestMethod.POST)
+	@ResponseBody
+	public String handleStockActivation(@PathVariable("id") int id) {
+		Stock stock = stockDAO.get(id);
+		Product product  = new Product();
+		product.setActive(false);
+		product.setName(stock.getName());
+		product.setBrand(stock.getBrand());
+		product.setDescription(stock.getDescription());
+		product.setQuantity(stock.getQuantity());
+		product.setCategoryId(stock.getCategoryId());
+		product.setSupplierId(stock.getUserId());
+		product.setUnitPrice(stock.getUnitPrice() * 3);
+		BankAccount bankAccount = bankAccountDAO.get(1);
+		bankAccount.setAmount(bankAccount.getAmount() - (stock.getUnitPrice() * stock.getQuantity()));
+		bankAccountDAO.updateAccount(bankAccount);
+		bankAccount = bankAccountDAO.get(stock.getUserId());
+		bankAccount.setAmount(bankAccount.getAmount() + (stock.getUnitPrice() * stock.getQuantity()));
+		bankAccountDAO.updateAccount(bankAccount);
+		productDAO.add(product);
+		stockDAO.delete(stock);
+		return "Stock with has been succesfully added to products";
+	}
+	
+	@RequestMapping(value="/stock/{id}/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public String handleSellerStockDeletion(@PathVariable("id") int id) {
+		stockDAO.delete(stockDAO.get(id));
+		return "Stock Product has been succesfully removed";
 	}
 	
 	@RequestMapping(value="/category", method=RequestMethod.POST)
