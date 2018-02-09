@@ -313,6 +313,7 @@ $(function() {
 					var checked = checkbox.prop("checked");
 					var dMsg = (checked) ? "Are you sure you want to activate the stock product?" : "Are you sure you want to deactivate the stock?";
 					var value = checkbox.prop("value");
+					var value2 = $("stockDelete").data("value");
 					
 					bootbox.confirm({
 						size: "medium",
@@ -320,7 +321,7 @@ $(function() {
 						message: dMsg,
 						callback: function(confirmed) {
 							if (confirmed) {
-								var activationUrl = window.contextRoot + "/admin/stock/" + value + "/activation";
+								var activationUrl = window.contextRoot + "/admin/stock/" + value2 + "/activation";
 								
 								$.post(activationUrl, function(data) {
 									bootbox.alert({
