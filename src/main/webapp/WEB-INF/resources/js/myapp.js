@@ -316,7 +316,7 @@ $(function() {
 					
 					bootbox.confirm({
 						size: "medium",
-						title: "Stock Activation/",
+						title: "Stock Activation",
 						message: dMsg,
 						callback: function(confirmed) {
 							if (confirmed) {
