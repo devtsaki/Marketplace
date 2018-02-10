@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileUploadUtility {
 
-	private static final String ABS_PATH = "C:\\Users\\tsaki\\eclipse-workspace\\marketplace\\src\\main\\webapp\\WEB-INF\\resources\\images\\";
+	private static final String ABS_PATH = "Users/tsaki/eclipse-workspace/marketplace/src/main/webapp/WEB-INF/resources/images/";
 	private static String REAL_PATH = "";
 	private static final Logger logger = LoggerFactory.getLogger(FileUploadUtility.class);
 	
@@ -44,7 +44,7 @@ public class FileUploadUtility {
 	
 	public static void uploadNoImage(HttpServletRequest request, String code) {
 		// get the real server path
-		REAL_PATH = request.getSession().getServletContext().getRealPath("/assets/images/");
+		REAL_PATH = request.getSession().getServletContext().getRealPath("/resources/images/");
 	
 		String imageURL = "http://placehold.it/640X480?text=No Image";
 		String destinationServerFile = REAL_PATH + code + ".jpg";
