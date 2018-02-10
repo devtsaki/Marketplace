@@ -61,7 +61,14 @@ body {
 }
 
 footer {
-	margin: 0;
+	padding: 150px;
+}
+.footer {
+	margin-top: 120px;
+}
+
+.content {
+	margin-bottom: 70px;
 }
 
 /*
