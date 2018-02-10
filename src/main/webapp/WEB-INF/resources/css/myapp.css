@@ -363,3 +363,46 @@ input:checked+.slider:before {
 	z-index: 9999;
 	background: url(../images/pre-loader.gif) 50% no-repeat #fff;
 }
+
+#nav-top {
+  background-color: #e67e22;
+  color: white;
+}
+
+#con1 {
+  padding-top: 10%;
+}
+#s1{ 
+  background-color: #2980b9;
+  color: white;
+}
+#s2{ background-color: white; padding-top: 30px;}
+#s3{ background-color: #2980b9; color:white;}
+
+#img-con{ padding-top: 5%; padding-right: 16%; padding-left: 16%; padding-bottom: 10%; 
+}
+#r1 img {
+  padding-top: 10%;
+}
+
+#spa1 {
+  padding-top: 10%;
+  padding-bottom: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+#spa2 {
+  padding-bottom: 10%;
+ 
+}
+
+#j1 {
+  background-color: #e67e22;
+}
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 70px;
+    text-align: center;
+    text-decoration: none;
+}

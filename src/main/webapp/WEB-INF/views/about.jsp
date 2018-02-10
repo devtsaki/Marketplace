@@ -1,94 +1,35 @@
-<!DOCTYPE html>
-<html>
-<title>W3.CSS</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body>
 
-<div class="w3-container w3-teal">
-<h1>About Us</h1>
+<div class="container text-center">
+  <section id="s1">
+    <div class="row">
+      <div class="container" id="con1">
+        <div class="col-md-6 col-sm-6 col-xs-12" id="spa1">
+          <h4>This is a template page i created, in order to demonstrate my ability to create a simple portfolio page. So, nothing to see here. Move along! This is a template page i created, in order to demonstrate my ability to create a simple portfolio
+              page. So, nothing to see here. Move along!</h4>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12" id="spa2">
+          <div class="img-responsive">
+            <a href="#">
+              <img src="http://www.clipartlord.com/wp-content/uploads/2015/10/pirate9.png" alt="Lights" style="width:100%">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
-
-<div class="w3-content">
-
-<div class="w3-row w3-margin">
-
-<div class="w3-third">
-  <img src="img_5terre.jpg" style="width:100%;min-height:200px">
-</div>
-<div class="w3-twothird w3-container">
-  <h2>5 Terre</h2>
-  <p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </p>
-</div>
-
-</div>
-<div class="w3-row w3-margin">
-
-<div class="w3-third">
-  <img src="img_monterosso.jpg" style="width:100%;min-height:200px">
-</div>
-<div class="w3-twothird w3-container">
-  <h2>Monterosso</h2>
-  <p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </p>
+<div class="container text-center">
+  <section id="s2">
+    <div class="text-muted">
+      <div class="row">
+        <h2><b>Portfolio</b></h2>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      </div>
+    </div>
+    </section>
 </div>
 
-</div>
-<div class="w3-row w3-margin">
-
-<div class="w3-third">
-  <img src="img_vernazza.jpg" style="width:100%;min-height:200px">
-</div>
-<div class="w3-twothird w3-container">
-  <h2>Vernazza</h2>
-  <p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </p>
-</div>
-
-</div>
-<div class="w3-row w3-margin">
-
-<div class="w3-third">
-  <img src="img_manarola.jpg" style="width:100%;min-height:200px">
-</div>
-<div class="w3-twothird w3-container">
-  <h2>Manarola</h2>
-  <p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </p>
-</div>
-
-</div>
-<div class="w3-row w3-margin">
-
-<div class="w3-third">
-  <img src="img_corniglia.jpg" style="width:100%;min-height:200px">
-</div>
-<div class="w3-twothird w3-container">
-  <h2>Corniglia</h2>
-  <p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </p>
-</div>
-
-</div>
-<div class="w3-row w3-margin">
-
-<div class="w3-third">
-  <img src="img_riomaggiore.jpg" style="width:100%;min-height:200px">
-</div>
-<div class="w3-twothird w3-container">
-  <h2>Riomaggiore</h2>
-  <p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </p>
-</div>
-
-</div>
-</div>
-</body>
-</html>

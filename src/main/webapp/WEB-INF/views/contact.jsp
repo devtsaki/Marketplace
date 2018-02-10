@@ -1,53 +1,39 @@
-<!DOCTYPE html>
-<html>
-<title>W3.CSS</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<body>
+<div class="container text-center">
+  <section id="s3">
+    <div class="row">
+      <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+          <h3>This is the contact section.</h3>
+          <form class="form-horizontal" role="form" method="post" action="index.php">
+            <div class="form-group">
+              <label for="name" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message" class="col-sm-2 control-label">Message</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="4" name="message"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
 
-<form action="/action_page.php" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
-<h2 class="w3-center">Contact Us</h2>
- 
-<div class="w3-row w3-section">
-  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" name="first" type="text" placeholder="First Name">
+              <input id="submit" name="submit" type="submit" value="Send" class="btn btn-warning">
+
+            </div>
+            <div class="form-group">
+
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </section>
 </div>
-
-<div class="w3-row w3-section">
-  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" name="last" type="text" placeholder="Last Name">
-    </div>
-</div>
-
-<div class="w3-row w3-section">
-  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" name="email" type="text" placeholder="Email">
-    </div>
-</div>
-
-<div class="w3-row w3-section">
-  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" name="phone" type="text" placeholder="Phone">
-    </div>
-</div>
-
-<div class="w3-row w3-section">
-  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" name="message" type="text" placeholder="Message">
-    </div>
-</div>
-
-<p class="w3-center">
-<button class="w3-button w3-section w3-blue w3-ripple"> Send </button>
-</p>
-</form>
-
-</body>
-</html> 
