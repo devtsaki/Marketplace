@@ -107,4 +107,16 @@ public class ProductDAOImpl implements ProductDAO {
 					.getResultList();
 }
 
+	@Override
+	public boolean save(Product product) {
+		try {
+			sessionFactory.getCurrentSession().save(product);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
 }

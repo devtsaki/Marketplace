@@ -310,19 +310,16 @@ $(function() {
 				var api = this.api();
 				api.$(".switch input[type='checkbox']").on("change", function() {
 					var checkbox = $(this);
-					var checked = checkbox.prop("checked");
-					var dMsg = (checked) ? "Are you sure you want to activate the stock product?" : "Are you sure you want to deactivate the stock?";
+					var dMsg = "Are you sure you want to activate the stock product?";
 					var value = checkbox.prop("value");
-					var value2 = $("stockDelete").data("value");
-					
 					bootbox.confirm({
 						size: "medium",
 						title: "Stock Activation",
 						message: dMsg,
 						callback: function(confirmed) {
+							
 							if (confirmed) {
-								var activationUrl = window.contextRoot + "/admin/stock/" + value2 + "/activation";
-								
+								var activationUrl = window.contextRoot + "/admin/stock/" + value + "/activation";
 								$.post(activationUrl, function(data) {
 									bootbox.alert({
 										size: "medium",
@@ -333,9 +330,6 @@ $(function() {
 								var updateUrl = window.contextRoot + '/admin/products';
 								window.location.href = updateUrl;
 								
-							}
-							else {
-								checkbox.prop("checked", !checked);
 							}
 						}
 						

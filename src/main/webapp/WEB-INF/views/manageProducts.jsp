@@ -218,7 +218,7 @@
 								<th>Brand</th>
 								<th>Quantity</th>
 								<th>Unit Price</th>
-								<th>Id</th>
+								<th>Supplier Id</th>
 								<th>Active</th>
 								<th>Edit</th>
 							</tr>
@@ -231,7 +231,7 @@
 								<th>Brand</th>
 								<th>Quantity</th>
 								<th>Unit Price</th>
-								<th>Id</th>
+								<th>Supplier Id</th>
 								<th>Active</th>
 								<th>Edit</th>
 							</tr>

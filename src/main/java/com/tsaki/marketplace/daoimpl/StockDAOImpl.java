@@ -68,6 +68,7 @@ public class StockDAOImpl implements StockDAO {
 		}
 	}
 
+
 	@Override
 	public List<Stock> sellerList(int userId) {
 		String selectActiveProducts = "FROM Stock WHERE userId = :userId AND active = :active";
@@ -84,5 +85,6 @@ public class StockDAOImpl implements StockDAO {
 				.setParameter("active", false)
 				.getResultList();
 	}
+
 
 }

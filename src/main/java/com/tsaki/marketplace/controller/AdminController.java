@@ -136,6 +136,7 @@ public class AdminController {
 	@ResponseBody
 	public String handleStockActivation(@PathVariable("id") int id) {
 		Stock stock = stockDAO.get(id);
+		logger.info("Admin stock " + stock.toString());
 		Product product  = new Product();
 		product.setActive(false);
 		product.setName(stock.getName());
@@ -145,13 +146,14 @@ public class AdminController {
 		product.setCategoryId(stock.getCategoryId());
 		product.setSupplierId(stock.getUserId());
 		product.setUnitPrice(stock.getUnitPrice() * 3);
+		productDAO.save(product);
 		BankAccount bankAccount = bankAccountDAO.get(1);
 		bankAccount.setAmount(bankAccount.getAmount() - (stock.getUnitPrice() * stock.getQuantity()));
 		bankAccountDAO.updateAccount(bankAccount);
 		bankAccount = bankAccountDAO.get(stock.getUserId());
 		bankAccount.setAmount(bankAccount.getAmount() + (stock.getUnitPrice() * stock.getQuantity()));
+		logger.info("Admin Supplier bank " + bankAccount.toString());
 		bankAccountDAO.updateAccount(bankAccount);
-		productDAO.add(product);
 		stockDAO.delete(stock);
 		return "Stock with has been succesfully added to products";
 	}
