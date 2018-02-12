@@ -324,11 +324,13 @@ $(function() {
 									bootbox.alert({
 										size: "medium",
 										title: "Information",
-										message: data
+										message: data,
+										callback: function() {
+											window.location.reload();
+										}
 									});
 								});
-								var updateUrl = window.contextRoot + '/admin/products';
-								window.location.href = updateUrl;
+								
 								
 							}
 						}
@@ -520,7 +522,7 @@ var $stockForm = $("#stockForm");
 							var str = "";
 							str += '<a href="' + window.contextRoot + '/supplier/' + data + '/product" class="btn btn-warning">';
 							str += '<span class="glyphicon glyphicon-pencil"></span></a>';
-							str += '<a id="stockDelete" data-value="' + row.id + '" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>' 
+							str += ' <a id="stockDelete" data-value="' + row.id + '" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>' 
 							return str;
 						}
 					}

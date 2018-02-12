@@ -21,6 +21,7 @@ public class BankAccount implements Serializable{
 	@OneToOne
 	private User user;
 	
+	@Column(columnDefinition = "double default 0")
 	private double amount;
 
 	public int getId() {
@@ -39,7 +40,7 @@ public class BankAccount implements Serializable{
 		this.user = user;
 	}
 	
-	@Column(columnDefinition = "double default 0")
+	
 	public double getAmount() {
 		return amount;
 	}

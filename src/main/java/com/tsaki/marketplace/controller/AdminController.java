@@ -29,6 +29,7 @@ import com.tsaki.marketplace.dto.Category;
 import com.tsaki.marketplace.dto.Product;
 import com.tsaki.marketplace.dto.Stock;
 import com.tsaki.marketplace.model.UserModel;
+import com.tsaki.marketplace.service.StockService;
 import com.tsaki.marketplace.util.FileUploadUtility;
 import com.tsaki.marketplace.validator.ProductValidator;
 
@@ -47,6 +48,9 @@ public class AdminController {
 	
 	@Autowired
 	private BankAccountDAO bankAccountDAO;
+	
+	@Autowired
+	private StockService stockService;
 	
 	@Autowired
 	HttpSession session;
@@ -137,31 +141,17 @@ public class AdminController {
 	public String handleStockActivation(@PathVariable("id") int id) {
 		Stock stock = stockDAO.get(id);
 		logger.info("Admin stock " + stock.toString());
-		Product product  = new Product();
-		product.setActive(false);
-		product.setName(stock.getName());
-		product.setBrand(stock.getBrand());
-		product.setDescription(stock.getDescription());
-		product.setQuantity(stock.getQuantity());
-		product.setCategoryId(stock.getCategoryId());
-		product.setSupplierId(stock.getUserId());
-		product.setUnitPrice(stock.getUnitPrice() * 3);
-		productDAO.save(product);
-		BankAccount bankAccount = bankAccountDAO.get(1);
-		bankAccount.setAmount(bankAccount.getAmount() - (stock.getUnitPrice() * stock.getQuantity()));
-		bankAccountDAO.updateAccount(bankAccount);
-		bankAccount = bankAccountDAO.get(stock.getUserId());
-		bankAccount.setAmount(bankAccount.getAmount() + (stock.getUnitPrice() * stock.getQuantity()));
-		logger.info("Admin Supplier bank " + bankAccount.toString());
-		bankAccountDAO.updateAccount(bankAccount);
-		stockDAO.delete(stock);
+		stockService.createProduct(stock);
+		stockService.chargeAdmin(stock);
+		stockService.paySupplier(stock);
+		stockService.deleteStock(stock);
 		return "Stock with has been succesfully added to products";
 	}
 	
 	@RequestMapping(value="/stock/{id}/delete", method = RequestMethod.POST)
 	@ResponseBody
 	public String handleSellerStockDeletion(@PathVariable("id") int id) {
-		stockDAO.delete(stockDAO.get(id));
+		stockService.deleteStock(stockDAO.get(id));
 		return "Stock Product has been succesfully removed";
 	}
 	
