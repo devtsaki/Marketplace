@@ -4,7 +4,7 @@
       <div class="container">
         <div class="col-md-8 col-md-offset-2">
           <h3>This is the contact section.</h3>
-          <form class="form-horizontal" role="form" method="post" action="index.php">
+          <form class="form-horizontal" role="form" method="get" action="">
             <div class="form-group">
               <label for="name" class="col-sm-2 control-label">Name</label>
               <div class="col-sm-10">

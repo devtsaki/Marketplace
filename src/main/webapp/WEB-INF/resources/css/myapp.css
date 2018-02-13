@@ -361,14 +361,10 @@ input:checked+.slider:before {
 	height: auto;
 }
 
-.se-pre-con {
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 98%;
+.pre-loader {
+	width: 100%;
 	height: 100%;
-	z-index: 9999;
-	background: url(../images/pre-loader.gif) 50% no-repeat #fff;
+	background: url(../images/pre-loader.svg) 50% no-repeat #fff;
 }
 
 #nav-top {
