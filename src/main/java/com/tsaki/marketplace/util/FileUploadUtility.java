@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileUploadUtility {
 
-	private static final String ABS_PATH = "Users/tsaki/eclipse-workspace/marketplace/src/main/webapp/WEB-INF/resources/images/";
+	//private static final String ABS_PATH = "Enter local project path";
 	private static String REAL_PATH = "";
 	private static final Logger logger = LoggerFactory.getLogger(FileUploadUtility.class);
 	
@@ -24,9 +24,9 @@ public class FileUploadUtility {
 		REAL_PATH = request.getSession().getServletContext().getRealPath("/WEB-INF/resources/images/");
 		logger.info(REAL_PATH);
 		
-		if (!new File(ABS_PATH).exists()) {
-			new File(ABS_PATH).mkdirs();
-		}
+//		if (!new File(ABS_PATH).exists()) {
+//			new File(ABS_PATH).mkdirs();
+//		}
 		if (!new File(REAL_PATH).exists()) {
 			new File(REAL_PATH).mkdirs();
 		}
@@ -35,7 +35,7 @@ public class FileUploadUtility {
 			//Server upload
 			file.transferTo(new File(REAL_PATH + code + ".jpg"));
 			//Project dir upload
-			file.transferTo(new File(ABS_PATH + code + ".jpg"));
+			//file.transferTo(new File(ABS_PATH + code + ".jpg"));
 		}
 		catch (IOException ex) {
 			
