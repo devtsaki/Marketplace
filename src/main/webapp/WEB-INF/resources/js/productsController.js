@@ -1,4 +1,4 @@
-var app = angular.module('ShoppingApp', []);
+var app = angular.module('Marketplace', []);
 
 app.controller('ProductController', function($http) {
 	

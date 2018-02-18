@@ -4,7 +4,7 @@ html {
 }
 
 body {
-	padding-top: 70px;
+	padding-top: 63px;
 	height: 100%;
 
 }
@@ -21,6 +21,21 @@ body {
         margin:auto;
         width: 100%;
 }
+
+.overlay { 
+	color:#fff;
+	position:absolute;
+	z-index:20;
+	top:40px;
+	left:0;
+	width:100%;
+	text-align:center;
+}
+
+.overlay>h1 {
+	font-family: 'Orbitron';
+	text-shadow: 0 0 3px #FF0000;
+} 
 
 .panel-heading {
 	background-color: #4F80E1 !important;
